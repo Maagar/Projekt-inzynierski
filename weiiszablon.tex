@@ -124,12 +124,38 @@ Kotlin jest zaprojektowany z myślą o prostocie, bezpieczeństwie i interoperac
 jest w pełni kompatybilny z istniejącym ekosystemem Javy, co umożliwia łatwą integrację z istniejącym kodem i 
 bibliotekami.
 
+Kotlin oferuje wiele nowoczesnych funkcji, które czynią go atrakcyjnym wyborem. Jego kluczowe 
+cechy to m.in. zwięzła składnia, która pozwala na pisanie czytelnego i mniej podatnego na błędy kodu, oraz 
+zaawansowane mechanizmy, takie jak obsługa funkcji wyższych rzędów, rozszerzenia klas czy programowanie funkcyjne. 
+Wbudowane mechanizmy bezpieczeństwa, takie jak system typów zapobiegający błędom typu null pointer exception 
+(tzw. "null safety"), znacząco zwiększają niezawodność aplikacji.
+
+Kotlin wspiera także współbieżność dzięki korutynom, które są lekkim mechanizmem współbieżności umożliwiającym 
+pisanie asynchronicznego kodu w czytelnym i intuicyjnym stylu. Korutyny działają w ramach istniejących wątków, 
+wykorzystując mechanizmy wstrzymywania i wznawiania, co pozwala na efektywne zarządzanie zasobami systemowymi bez 
+potrzeby blokowania wątków. To podejście znacząco upraszcza tworzenie wydajnych aplikacji, zwłaszcza tych, które 
+intensywnie korzystają z asynchronicznej komunikacji sieciowej, przetwarzania dużych ilości danych czy operacji 
+wejścia/wyjścia.
+
 \subsection{Jetpack Compose}
 
 Jetpack Compose to nowoczesny framework interfejsu użytkownika stworzony przez Google, który pozwala 
 na tworzenie aplikacji na Androida w sposób deklaratywny. Zamiast używać tradycyjnych plików XML do 
 definiowania widoków, Jetpack Compose umożliwia definiowanie interfejsu w kodzie Kotlin, co prowadzi 
 do tworzenia prostszych, bardziej zwięzłych i łatwiejszych w utrzymaniu aplikacji.
+
+Jedną z największych zalet Jetpack Compose jest możliwość dynamicznego reagowania na zmiany stanu aplikacji. 
+Dzięki podejściu opartemu na deklaratywnej reaktywności, widoki automatycznie aktualizują się w odpowiedzi na 
+zmiany danych, co eliminuje konieczność ręcznego zarządzania aktualizacjami interfejsu użytkownika.
+
+W Jetpack Compose funkcje komponowalne (ang. composable functions) stanowią podstawę tworzenia interfejsu 
+użytkownika. Są to specjalne funkcje oznaczone adnotacją @Composable, które pozwalają na deklaratywne definiowanie 
+i łączenie elementów UI. Funkcje komponowalne w Jetpack Compose działają na zasadzie deklaratywnego określania 
+struktury i zawartości interfejsu użytkownika, zamiast szczegółowego opisywania sposobu jego wyświetlania. Co 
+umożliwia koncentrację na logice aplikacji, a nie na szczegółach implementacji interfejsu. Każda funkcja 
+komponowalna może zawierać inne funkcje komponowalne, tworząc w ten sposób złożone i hierarchiczne struktury UI 
+w sposób naturalny i łatwy do zrozumienia. Takie podejście umożliwia tworzeniee intuicyjnych, skalowalnych i łatwych 
+w utrzymaniu aplikacji.
 
 Jetpack Compose został wybrany, ponieważ jest rozwiązaniem w pełni zintegrowanym z Androidem, 
 co zapewnia najlepszą optymalizację i wydajność w tworzeniu aplikacji natywnych na tę platformę.
@@ -151,11 +177,20 @@ GitHub to powszechnie używana platforma do zarządzania kodem źródłowym i ws
 oparta na systemie kontroli wersji Git. Umożliwia śledzenie zmian w kodzie, zarządzanie historią projektu oraz
 łatwą współpracę wielu programistów nad jednym projektem.
 
+\subsection{Cloudinary}
+
+Cloudinary to platforma do zarządzania multimediami w chmurze, która umożliwia przechowywanie, optymalizację i 
+dostarczanie obrazów, wideo oraz innych plików multimedialnych. Dzięki zaawansowanym funkcjom, takim jak 
+automatyczna optymalizacja, zmiana rozmiaru, kadrowanie i konwersja formatów, Cloudinary pozwala na łatwe 
+dostosowanie zasobów do różnych urządzeń i platform.
+
+
 \clearpage
 
 \section{Struktura bazy danych Supabase}
 
-
+Backend aplikacji został utworzony w Supabase. Za wykonaną pracę autor uważa utworzenie struktury bazy danych,
+funkcji 
 
 \begin{figure}[ht]
 	\centering
