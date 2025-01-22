@@ -10,16 +10,12 @@
 \contentsline {subsection}{\numberline {3.4}Supabase}{\footnotesize 9}{}%
 \contentsline {subsection}{\numberline {3.5}GitHub}{\footnotesize 9}{}%
 \contentsline {subsection}{\numberline {3.6}Cloudinary}{\footnotesize 9}{}%
-\contentsline {section}{\numberline {4}Struktura bazy danych Supabase}{\footnotesize 10}{}%
-\contentsline {section}{\numberline {5}Architektura i struktura aplikacji}{\footnotesize 12}{}%
-\contentsline {subsection}{\numberline {5.1}MVVM (Model-View-ViewModel)}{\footnotesize 12}{}%
-\contentsline {subsubsection}{\numberline {5.1.1}Model}{\footnotesize 12}{}%
-\contentsline {subsection}{\numberline {5.2}Struktura projektu}{\footnotesize 12}{}%
-\contentsline {section}{\numberline {6}Tekst zasadniczy -- II}{\footnotesize 13}{}%
-\contentsline {subsubsection}{\numberline {6.0.1}Listingi programów}{\footnotesize 13}{}%
-\contentsline {subsubsection}{\numberline {6.0.2}Numerowanie i punktowanie}{\footnotesize 14}{}%
-\contentsline {subsection}{\numberline {6.1}Wykaz literatury}{\footnotesize 14}{}%
-\contentsline {subsection}{\numberline {6.2}Wydruk pracy}{\footnotesize 14}{}%
-\contentsline {section}{\numberline {7}Podsumowanie i wnioski końcowe}{\footnotesize 16}{}%
-\contentsline {section}{Załączniki}{\footnotesize 17}{}%
+\contentsline {section}{\numberline {4}Architektura bazy danych Supabase}{\footnotesize 11}{}%
+\contentsline {subsection}{\numberline {4.1}Schemat bazy danych}{\footnotesize 11}{}%
+\contentsline {subsubsection}{\numberline {4.1.1}Normalizacja}{\footnotesize 13}{}%
+\contentsline {subsection}{\numberline {4.2}Funkcje bazy danych}{\footnotesize 14}{}%
+\contentsline {section}{\numberline {5}Architektura i struktura aplikacji}{\footnotesize 17}{}%
+\contentsline {subsection}{\numberline {5.1}Struktura projektu}{\footnotesize 17}{}%
+\contentsline {subsection}{\numberline {5.2}MVVM (Model-View-ViewModel)}{\footnotesize 17}{}%
+\contentsline {subsubsection}{\numberline {5.2.1}Model}{\footnotesize 17}{}%
 \contentsline {section}{Literatura}{\footnotesize 18}{}%
