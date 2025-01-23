@@ -160,6 +160,14 @@ w utrzymaniu aplikacji.
 Jetpack Compose został wybrany, ponieważ jest rozwiązaniem w pełni zintegrowanym z Androidem, 
 co zapewnia najlepszą optymalizację i wydajność w tworzeniu aplikacji natywnych na tę platformę.
 
+\subsection{Material Design}
+
+Material Design to język projektowania opracowany przez Google, który definiuje zasady estetyki, interakcji i 
+użyteczności aplikacji. W Jetpack Compose Material Design stanowi podstawę projektowania interfejsów użytkownika, 
+oferując gotowe komponenty, takie jak przyciski, pola tekstowe czy karty, które są zgodne z jego wytycznymi. 
+Dzięki temu możliwe jest szybkie i intuicyjne tworzenie estetycznych, responsywnych i spójnych interfejsów, z 
+łatwą personalizacją wyglądu aplikacji poprzez modyfikację motywów, kolorów i stylów.
+
 \subsection{Supabase}
 
 Supabase to nowoczesna platforma typu Backend-as-a-Service (backend jako usługa), która umożliwia tworzenie
@@ -176,12 +184,6 @@ modyfikowanie struktury tabel oraz relacji między nimi. Dzięki wbudowanemu pan
 mogą przeglądać dane, zarządzać użytkownikami oraz monitorować aktywność w bazie danych, co znacząco upraszcza 
 proces rozwoju aplikacji.
 
-\subsection{GitHub}
-
-GitHub to powszechnie używana platforma do zarządzania kodem źródłowym i współpracy w zespołach programistycznych, 
-oparta na systemie kontroli wersji Git. Umożliwia śledzenie zmian w kodzie, zarządzanie historią projektu oraz
-łatwą współpracę wielu programistów nad jednym projektem.
-
 \subsection{Cloudinary}
 
 Cloudinary to platforma do zarządzania multimediami w chmurze, która umożliwia przechowywanie, optymalizację i 
@@ -189,6 +191,11 @@ dostarczanie obrazów, wideo oraz innych plików multimedialnych. Dzięki zaawan
 automatyczna optymalizacja, zmiana rozmiaru, kadrowanie i konwersja formatów, Cloudinary pozwala na łatwe 
 dostosowanie zasobów do różnych urządzeń i platform.
 
+\subsection{GitHub}
+
+GitHub to powszechnie używana platforma do zarządzania kodem źródłowym i współpracy w zespołach programistycznych, 
+oparta na systemie kontroli wersji Git. Umożliwia śledzenie zmian w kodzie, zarządzanie historią projektu oraz
+łatwą współpracę wielu programistów nad jednym projektem.
 
 \clearpage
 
@@ -351,7 +358,86 @@ utrzymania porządku i skalowalności aplikacji, umożliwiając łatwe zarządza
 
 \subsection{Struktura projektu}
 
+Aplikacja została wykonana z wykorzystaniem narzędzia Android Studio, a struktura projektu została zaprojektowana 
+zgodnie z rekomendowanymi zasadami architektury MVVM (Model-View-ViewModel), co zapewnia czytelność, modułowość
+oraz łatwość w utrzymaniu i rozwoju kodu. Struktura plików projektu przedstawiona jest na rysunku \ref{Fig:struktura}
 
+\begin{figure}[ht]
+	\centering
+	\includegraphics{figures/struktura.png}
+	\caption{Struktura plików aplikacji}
+\label{Fig:struktura}
+\end{figure}
+
+\subsubsection{Folder data}
+
+Folder data pełni rolę zbiorczą dla klas i funkcji odpowiedzialnych za zarządzanie danymi, w tym ich przechowywanie 
+oraz pobieranie z bazy danych.
+
+\begin{enumerate}[label=\alph*), leftmargin=1.25cm]
+	\item Folder local jest przeznaczony do przechowywania danych lokalnych, takich jak tokeny autoryzacyjne, 
+	ustawienia aplikacji czy inne informacje, które nie wymagają zdalnej synchronizacji, z wykorzystaniem biblioteki 
+	DataStore, która zapewnia bezpieczne i efektywne przechowywanie danych w formie klucz-wartość lub preferencji,
+	\item Folder model służy do przechowywania klas DTO (Data Transfer Object), które są serializowanymi obiektami 
+	wykorzystywanymi do przechowywania danych pobranych z bazy danych. Klasom tym przypisuje się odpowiednie 
+	struktury, które umożliwiają prawidłowe reprezentowanie i manipulowanie danymi w aplikacji,
+	\item w folderze network przechowywane są klasy DAO (Data Access Object), które odpowiadają za komunikację z 
+	bazą danych Supabase. Klasy te pełnią rolę abstrakcji, umożliwiając wykonywanie operacji na danych, takich jak 
+	pobieranie, zapisywanie czy aktualizowanie rekordów, bezpośrednio w bazie. Dzięki zastosowaniu wzorca DAO, 
+	operacje te są oddzielone od logiki aplikacji, co zapewnia lepszą modularność, łatwiejsze zarządzanie dostępem do 
+	danych oraz umożliwia łatwiejszą wymianę technologii dostępu do danych w przyszłości,
+	\item Folder repository jest odpowiedzialny za przechowywanie klas repozytoriów, które pełnią rolę pośredników 
+	pomiędzy warstwą danych a resztą aplikacji. Repozytoria w tym folderze odpowiadają za realizację operacji dostępu 
+	do różnych źródeł danych. Oddzielają one logikę biznesową aplikacji od szczegółów technicznych, zapewniając 
+	łatwiejsze zarządzanie danymi oraz umożliwiając przyszłe zmiany w źródłach danych bez wpływu na resztę aplikacji. 
+	Repozytoria ułatwiają testowanie, zapewniają modularność aplikacji i poprawiają jej elastyczność, umożliwiając 
+	łatwą wymianę technologii dostępu do danych.
+\end{enumerate}
+
+\subsubsection{Folder di (Dependency Injection)}
+
+Folder di służy do przechowywania modułów odpowiedzialnych za konfigurację zależności aplikacji. Wykorzystuje 
+bibliotekę Hilt, która umożliwia definiowanie sposobu tworzenia i dostarczania wymaganych obiektów, takich jak 
+klienty API, repozytoria czy inne kluczowe komponenty. Moduły w tym folderze zapewniają centralne miejsce do 
+zarządzania zależnościami, co ułatwia organizację projektu i poprawia czytelność kodu.
+
+\subsubsection{Folder navigation}
+
+Folder navigation zarządza całą logiką nawigacji w aplikacji, co umożliwia łatwe i efektywne przejścia pomiędzy 
+ekranami. Zawiera definicję ekranów jako obiektów typu sealed class, co pozwala na centralne zarządzanie wszystkimi 
+dostępnymi widokami w aplikacji. W tym folderze określane są także zasady dotyczące tego, kiedy i jak ekran powinien 
+wyświetlać dodatkowe komponenty, takie jak dolne menu nawigacyjne.
+
+Dzięki wykorzystaniu biblioteki navigation-compose, folder navigation umożliwia łatwą konfigurację tras i przejść, 
+eliminując konieczność ręcznego zarządzania stanem nawigacji. Obsługuje różne scenariusze, takie jak logowanie, 
+rejestracja, przeglądanie biblioteki czy edycja profilu użytkownika, zapewniając płynność i spójność w nawigacji. 
+W połączeniu z komponentem NavHost, aplikacja może efektywnie zarządzać stanem nawigacyjnym, przechodzić między 
+ekranami i dostosowywać animacje przejść. Dzięki tej strukturze, aplikacja jest bardziej modularna, a logika 
+nawigacyjna pozostaje łatwa do utrzymania i rozbudowy.
+
+\subsubsection{Folder presentation}
+
+
+
+\subsubsection{Folder utils}
+
+Folder utils zawiera funkcje pomocnicze, które wspierają różne operacje w aplikacji, takie jak walidacja danych 
+wejściowych. Funkcje te są uniwersalne i mogą być wykorzystywane w różnych częściach projektu, co pozwala na unikanie 
+powielania kodu. Dzięki temu zapewniają one centralizację logiki, co ułatwia utrzymanie aplikacji, poprawia jej 
+czytelność oraz umożliwia łatwiejsze testowanie. Przykłady funkcji w tym folderze to metody sprawdzające poprawność 
+adresu e-mail, hasła czy nazwy użytkownika. Wszystkie funkcje w utils są zaprojektowane w sposób modularny, co 
+pozwala na ich elastyczne zastosowanie w całym projekcie. Przykładowa funkcja znajduje się listingu \ref{validateEmail}
+
+\begin{lstlisting}[language=Kotlin,caption=kod funkcji validateEmail, label={validateEmail}]
+	fun validateEmail(email: String, context: Context): String? {
+    	val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\$".toRegex()
+    		return if (email.isEmpty()) {
+        		context.getString(R.string.email_empty)
+    		} else if (!email.matches(emailRegex)) {
+        		context.getString(R.string.invalid_email)
+    		} else null
+		}
+\end{lstlisting}
 
 \subsection{MVVM (Model-View-ViewModel)}
 
@@ -360,7 +446,7 @@ organizacji kodu i rozdzieleniu odpowiedzialności pomiędzy różne warstwy apl
 jest zwiększenie modularności, łatwości testowania oraz oddzielenie logiki biznesowej od interfejsu użytkownika.
 
 \begin{enumerate}[label=\alph*), leftmargin=1.25cm]
-	\item Model reprezentuje warstwwę danych i logiki biznesowej. Jest odpowiedzialny za zarządzanie danymi,
+	\item Model reprezentuje warstwę danych i logiki biznesowej. Jest odpowiedzialny za zarządzanie danymi,
 	które mogą pochodzić z różnych źródeł, takich jak bazy danych, API czy pliki lokalne. Model nie zawiera
 	żadnej logiki związanej z interfejsem użytkownika ani sposobem prezentacji danych,
 	\item View (Widok) odpoawiada za warstwę prezentacji. Widok to interfejs użytkownika (UI), który jest

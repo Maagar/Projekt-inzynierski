@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.1.17)  22 JAN 2025 17:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.1.17)  23 JAN 2025 22:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -499,68 +499,80 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 ] [7
 
 ] [8]
-Underfull \vbox (badness 1137) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [9] [10]
 <figures/schemat1.png, id=39, 670.75594pt x 934.24031pt>
 File: figures/schemat1.png Graphic file (type png)
 <use figures/schemat1.png>
-Package pdftex.def Info: figures/schemat1.png  used on input line 220.
+Package pdftex.def Info: figures/schemat1.png  used on input line 227.
 (pdftex.def)             Requested size: 441.01773pt x 614.24838pt.
  [11
 
 ] [12 <./figures/schemat1.png>] (C:\Users\magar\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 235.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 242.
  (C:\Users\magar\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [13
 
-] [14] [15] [16] [17
+] [14] [15] [16]
+<figures/struktura.png, id=63, 237.88875pt x 326.72063pt>
+File: figures/struktura.png Graphic file (type png)
+<use figures/struktura.png>
+Package pdftex.def Info: figures/struktura.png  used on input line 367.
+(pdftex.def)             Requested size: 237.88815pt x 326.71982pt.
+
+Underfull \vbox (badness 4036) has occurred while \output is active []
+
+ [17
+
+ <./figures/struktura.png>] [18]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <11> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 432.
+ [19] [20]
+
+LaTeX Warning: Empty `thebibliography' environment on input line 469.
+
+[21
 
 ]
-
-LaTeX Warning: Empty `thebibliography' environment on input line 383.
-
-[18
-
-]
-Overfull \hbox (14.2264pt too wide) in paragraph at lines 387--387
+Overfull \hbox (14.2264pt too wide) in paragraph at lines 473--473
 [][]| 
  []
 
 
-Overfull \hbox (14.2264pt too wide) in paragraph at lines 387--387
+Overfull \hbox (14.2264pt too wide) in paragraph at lines 473--473
 [][]| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 387--387
+Underfull \hbox (badness 10000) in paragraph at lines 473--473
 [][]
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[19] (weiiszablon.aux)
+[22] (weiiszablon.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 8518 strings out of 474486
- 131741 string characters out of 5743755
+ 8686 strings out of 474486
+ 133735 string characters out of 5743755
  2148542 words of memory out of 5000000
- 30669 multiletter control sequences out of 15000+600000
- 607303 words of font info for 68 fonts, out of 8000000 for 9000
+ 30836 multiletter control sequences out of 15000+600000
+ 607621 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,13n,85p,653b,1903s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on weiiszablon.pdf (19 pages, 946086 bytes).
+<C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
+Output written on weiiszablon.pdf (22 pages, 997286 bytes).
 PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
+ 120 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

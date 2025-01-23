@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1737561732.94896 "c:/Users/magar/Desktop/Praca/weiiszablon.tex" "weiiszablon.pdf" "weiiszablon" 1737561733.83791 0
+["pdflatex"] 1737669184.3608 "c:/Users/magar/Desktop/Praca/weiiszablon.tex" "weiiszablon.pdf" "weiiszablon" 1737669185.27799 0
   "C:/Users/magar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1737120625 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/magar/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1737120609 24225046 e9900b02ab46d04496da6329b364d91f ""
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1256929440 2375 baa924870cfb487815765f9094cf3728 ""
@@ -13,6 +13,7 @@
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/ec-lmr12.tfm" 1256929440 12092 7b1546e2d096cfd5dcbd4049b0b1ec2e ""
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/ec-lmr17.tfm" 1256929440 12156 ca1ae6a3c8564e89597f1f993fba1608 ""
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/ec-lmr6.tfm" 1256929440 12048 c1068d0f4772be9b0ec447692e1d6d82 ""
+  "C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/ec-lmtk10.tfm" 1256929440 1368 5bfeb1cf8f9f0acdb7436bfaa8e0da4e ""
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/ec-lmtt10.tfm" 1256929440 1372 2ef2c2b492b3c4cd7879fe083abbb061 ""
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/ec-lmtt12.tfm" 1256929440 1368 6a60e6a5e029141041d64d339b87e533 ""
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/lmex10.tfm" 1256929440 992 ce925c9346c7613270a79afbee98c070 ""
@@ -31,6 +32,7 @@
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb" 1256929440 113634 9384aebdf26f9881e046a4b5574566db ""
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb" 1256929440 119752 1bd8d06e4079df624bf59ce3ad7c9aa6 ""
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb" 1256929440 123394 992f5e87d698d9e94717394c62580ea6 ""
+  "C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb" 1256929440 117319 28a05fff1cac98366062ffbb2e22858d ""
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb" 1256929440 110323 19372944fba298bb4c4758abff959582 ""
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty" 1704647332 150008 7a05b0fdc0167c04e192003e780ab195 ""
@@ -90,12 +92,13 @@
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/tex/latex/trimspaces/trimspaces.sty" 1253169183 1380 971a51b00a14503ddf754cab24c3f209 ""
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "auxiliary/logoweii.jpg" 1737120221 629754 fc53d0837ea5b2ed4c7ef8557a9c1d89 ""
-  "c:/Users/magar/Desktop/Praca/weiiszablon.tex" 1737561731 21209 8905d77641a876851920fd550c78e183 ""
+  "c:/Users/magar/Desktop/Praca/weiiszablon.tex" 1737669182 27386 d516f1b9d3009eaf4b8b9b6c3a0c2a40 ""
   "figures/schemat1.png" 1737398815 129191 4a8014e68aa20cc5bdaac391f6a368ae ""
-  "weiiszablon.aux" 1737561733 3817 5892269f26b44e1cd379b89d7cfbc950 "pdflatex"
+  "figures/struktura.png" 1737561575 20594 befae16be8771d746517722554e624db ""
+  "weiiszablon.aux" 1737669185 5025 4f326247b78729832b68cb32d7ea7949 "pdflatex"
   "weiiszablon.sty" 1737380687 13604 377cffc9d718fd1cdb979ec6a45baa13 ""
-  "weiiszablon.tex" 1737561731 21209 8905d77641a876851920fd550c78e183 ""
-  "weiiszablon.toc" 1737561733 1622 f98115a57b6937e3cb2fc7e65bdbda0e "pdflatex"
+  "weiiszablon.tex" 1737669182 27386 d516f1b9d3009eaf4b8b9b6c3a0c2a40 ""
+  "weiiszablon.toc" 1737669185 2156 d45bf8632a839f414449abe8e85223d5 "pdflatex"
   (generated)
   "weiiszablon.aux"
   "weiiszablon.log"
