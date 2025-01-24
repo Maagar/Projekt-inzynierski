@@ -1,27 +1,36 @@
 \babel@toc {polish}{}\relax 
-\contentsline {section}{\numberline {1}Wstęp}{\footnotesize 5}{}%
-\contentsline {section}{\numberline {2}Podobne aplikacje}{\footnotesize 6}{}%
-\contentsline {subsection}{\numberline {2.1}Bookmory}{\footnotesize 6}{}%
-\contentsline {subsection}{\numberline {2.2}TV Time}{\footnotesize 6}{}%
-\contentsline {section}{\numberline {3}Środowiska i technologie}{\footnotesize 7}{}%
-\contentsline {subsection}{\numberline {3.1}Android Studio}{\footnotesize 7}{}%
-\contentsline {subsection}{\numberline {3.2}Kotlin}{\footnotesize 7}{}%
-\contentsline {subsection}{\numberline {3.3}Jetpack Compose}{\footnotesize 8}{}%
-\contentsline {subsection}{\numberline {3.4}Material Design}{\footnotesize 9}{}%
-\contentsline {subsection}{\numberline {3.5}Supabase}{\footnotesize 9}{}%
-\contentsline {subsection}{\numberline {3.6}Cloudinary}{\footnotesize 10}{}%
-\contentsline {subsection}{\numberline {3.7}GitHub}{\footnotesize 10}{}%
-\contentsline {section}{\numberline {4}Architektura bazy danych Supabase}{\footnotesize 11}{}%
-\contentsline {subsection}{\numberline {4.1}Schemat bazy danych}{\footnotesize 11}{}%
-\contentsline {subsubsection}{\numberline {4.1.1}Normalizacja}{\footnotesize 13}{}%
-\contentsline {subsection}{\numberline {4.2}Funkcje bazy danych}{\footnotesize 14}{}%
-\contentsline {section}{\numberline {5}Architektura i struktura aplikacji}{\footnotesize 17}{}%
-\contentsline {subsection}{\numberline {5.1}Struktura projektu}{\footnotesize 17}{}%
-\contentsline {subsubsection}{\numberline {5.1.1}Folder data}{\footnotesize 18}{}%
-\contentsline {subsubsection}{\numberline {5.1.2}Folder di (Dependency Injection)}{\footnotesize 18}{}%
-\contentsline {subsubsection}{\numberline {5.1.3}Folder navigation}{\footnotesize 19}{}%
-\contentsline {subsubsection}{\numberline {5.1.4}Folder presentation}{\footnotesize 19}{}%
-\contentsline {subsubsection}{\numberline {5.1.5}Folder utils}{\footnotesize 19}{}%
-\contentsline {subsection}{\numberline {5.2}MVVM (Model-View-ViewModel)}{\footnotesize 20}{}%
-\contentsline {subsubsection}{\numberline {5.2.1}Model}{\footnotesize 20}{}%
-\contentsline {section}{Literatura}{\footnotesize 21}{}%
+\contentsline {section}{\numberline {1}Wstęp}{\footnotesize 6}{}%
+\contentsline {section}{\numberline {2}Podobne aplikacje}{\footnotesize 7}{}%
+\contentsline {subsection}{\numberline {2.1}Bookmory}{\footnotesize 7}{}%
+\contentsline {subsection}{\numberline {2.2}TV Time}{\footnotesize 7}{}%
+\contentsline {section}{\numberline {3}Środowiska i technologie}{\footnotesize 8}{}%
+\contentsline {subsection}{\numberline {3.1}Android Studio}{\footnotesize 8}{}%
+\contentsline {subsection}{\numberline {3.2}Kotlin}{\footnotesize 8}{}%
+\contentsline {subsection}{\numberline {3.3}Jetpack Compose}{\footnotesize 9}{}%
+\contentsline {subsection}{\numberline {3.4}Material Design}{\footnotesize 10}{}%
+\contentsline {subsection}{\numberline {3.5}Supabase}{\footnotesize 10}{}%
+\contentsline {subsection}{\numberline {3.6}Cloudinary}{\footnotesize 11}{}%
+\contentsline {subsection}{\numberline {3.7}GitHub}{\footnotesize 11}{}%
+\contentsline {section}{\numberline {4}Architektura bazy danych Supabase}{\footnotesize 12}{}%
+\contentsline {subsection}{\numberline {4.1}Schemat bazy danych}{\footnotesize 12}{}%
+\contentsline {subsection}{\numberline {4.2}Normalizacja}{\footnotesize 14}{}%
+\contentsline {subsubsection}{\numberline {4.2.1}Pierwsza postać normalna}{\footnotesize 14}{}%
+\contentsline {subsubsection}{\numberline {4.2.2}Druga postać normalna}{\footnotesize 14}{}%
+\contentsline {subsubsection}{\numberline {4.2.3}Trzecia postać normalna}{\footnotesize 14}{}%
+\contentsline {subsubsection}{\numberline {4.2.4}Czwarta postać normalna}{\footnotesize 15}{}%
+\contentsline {subsection}{\numberline {4.3}Funkcje bazy danych}{\footnotesize 15}{}%
+\contentsline {section}{\numberline {5}Architektura i struktura aplikacji}{\footnotesize 18}{}%
+\contentsline {subsection}{\numberline {5.1}Struktura projektu}{\footnotesize 18}{}%
+\contentsline {subsubsection}{\numberline {5.1.1}Folder data}{\footnotesize 19}{}%
+\contentsline {subsubsection}{\numberline {5.1.2}Folder di}{\footnotesize 19}{}%
+\contentsline {subsubsection}{\numberline {5.1.3}Folder navigation}{\footnotesize 20}{}%
+\contentsline {subsubsection}{\numberline {5.1.4}Folder presentation}{\footnotesize 20}{}%
+\contentsline {subsubsection}{\numberline {5.1.5}Folder utils}{\footnotesize 22}{}%
+\contentsline {subsection}{\numberline {5.2}Wstrzykiwanie zależności (Dependency Injection)}{\footnotesize 22}{}%
+\contentsline {subsubsection}{\numberline {5.2.1}Konfiguracja Hilt}{\footnotesize 23}{}%
+\contentsline {subsubsection}{\numberline {5.2.2}Moduły Hilt}{\footnotesize 24}{}%
+\contentsline {subsubsection}{\numberline {5.2.3}Przykłady wstrzykiwania zależności z Hilt}{\footnotesize 25}{}%
+\contentsline {subsection}{\numberline {5.3}MVVM (Model-View-ViewModel)}{\footnotesize 25}{}%
+\contentsline {subsubsection}{\numberline {5.3.1}Model}{\footnotesize 26}{}%
+\contentsline {section}{\numberline {6}Podsumowanie}{\footnotesize 27}{}%
+\contentsline {section}{Literatura}{\footnotesize 28}{}%
