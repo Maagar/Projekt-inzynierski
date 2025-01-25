@@ -343,8 +343,7 @@ Kod przykładowej funkcji bazy danych znajduje się w listingu \ref{sqlFunction}
 	   END;
 	   $function$;
 	\end{lstlisting}
-
-funkcja ta pozwala na podstawie identyfikatora pobrać z bazy danych informacje o wybranym tomie książki (volume), z bazy
+Funkcja ta pozwala na podstawie identyfikatora pobrać z bazy danych informacje o wybranym tomie książki (volume), z bazy
 danych. Funkcja zwraca wynik w postaci teabeli zawierającej dane o tomie oraz dodatkowe informacje związane z użytkownikiem
 jeżeli są dostępne, takie jak pobrane z tabeli user\_volumes, times\_read informujące o tym ile razy użytkownik przeczytał
 dany tom. Może wystąpić sytuacja, w której pobierany tom nie ma odpowiadającego rekordu w tabeli user\_volumes, ponieważ 
@@ -352,15 +351,11 @@ użytkownik nie oznaczył go jako przeczytanego ani posiadanego. W takim przypad
 domyślnymi wartościami, takimi jak 0 dla liczby przeczytań czy false dla statusu posiadania, co jest zrealizowane z 
 wykorzystaniem funkcji COALESCE, której użycie można zaobserować w liniach 14 i 15.
 
+\subsection{RLS (Row Level Security)}
+
 \clearpage
 
-\section{Architektura i struktura aplikacji}
-
-Architektura aplikacji została oparta na wzorcu MVVM, co pozwala na efektywne zarządzanie stanem i separację 
-logiki biznesowej od interfejsu użytkownika. Właściwa organizacja plików w projekcie jest kluczowa dla 
-utrzymania porządku i skalowalności aplikacji, umożliwiając łatwe zarządzanie komponentami i ich zależnościami. 
-
-\subsection{Struktura projektu}
+\section{Struktura projektu}
 
 Aplikacja została wykonana z wykorzystaniem narzędzia Android Studio, a struktura projektu została zaprojektowana 
 zgodnie z rekomendowanymi zasadami architektury MVVM (Model-View-ViewModel), co zapewnia czytelność, modułowość
@@ -373,11 +368,11 @@ oraz łatwość w utrzymaniu i rozwoju kodu. Struktura plików projektu przedsta
 \label{Fig:struktura}
 \end{figure}
 
-\subsubsection{Folder data}
+\subsection{Folder data}
 
 Folder "data" pełni rolę zbiorczą dla klas i funkcji odpowiedzialnych za zarządzanie danymi, w tym ich przechowywanie 
 oraz pobieranie z bazy danych.
-
+\begin{samepage}
 \begin{enumerate}[label=\alph*), leftmargin=1.25cm]
 	\item Folder "local" jest przeznaczony do przechowywania danych lokalnych, takich jak tokeny autoryzacyjne, 
 	ustawienia aplikacji czy inne informacje, które nie wymagają zdalnej synchronizacji, z wykorzystaniem biblioteki 
@@ -397,15 +392,15 @@ oraz pobieranie z bazy danych.
 	Repozytoria ułatwiają testowanie, zapewniają modularność aplikacji i poprawiają jej elastyczność, umożliwiając 
 	łatwą wymianę technologii dostępu do danych.
 \end{enumerate}
-
-\subsubsection{Folder di}
+\end{samepage}
+\subsection{Folder di}
 
 Folder "di" służy do przechowywania modułów odpowiedzialnych za konfigurację zależności aplikacji. Wykorzystuje 
 bibliotekę Hilt, która umożliwia definiowanie sposobu tworzenia i dostarczania wymaganych obiektów, takich jak 
 klienty API, repozytoria czy inne kluczowe komponenty. Moduły w tym folderze zapewniają centralne miejsce do 
 zarządzania zależnościami, co ułatwia organizację projektu i poprawia czytelność kodu.
 
-\subsubsection{Folder navigation}
+\subsection{Folder navigation}
 
 Folder "navigation" zarządza całą logiką nawigacji w aplikacji, co umożliwia łatwe i efektywne przejścia pomiędzy 
 ekranami. Zawiera definicję ekranów jako obiektów typu sealed class, co pozwala na centralne zarządzanie wszystkimi 
@@ -418,7 +413,7 @@ W połączeniu z komponentem NavHost, aplikacja może efektywnie zarządzać sta
 ekranami i dostosowywać animacje przejść. Dzięki tej strukturze, aplikacja jest bardziej modularna, a logika 
 nawigacyjna pozostaje łatwa do utrzymania i rozbudowy.
 
-\subsubsection{Folder presentation}
+\subsection{Folder presentation}
 
 Folder "presentation" zawiera pliki odpowiadające za warstwę prezentacji aplikacji. Znajdują się w nim zarówno widoki, 
 które definiują interfejs użytkownika, jak i modele widoków, które dostarczają dane i logikę potrzebną do poprawnego 
@@ -485,7 +480,7 @@ Ostatni folder, "ui", dzieli się na dwa podfoldery: "theme", w którym przechow
 kolorów, typografii oraz motywu aplikacji, oraz "viewmodel", zawierający pliki modeli widoków, które są współdzielone 
 między kilkoma ekranami.
 
-\subsubsection{Folder utils}
+\subsection{Folder utils}
 
 Folder utils zawiera funkcje pomocnicze, które wspierają różne operacje w aplikacji, takie jak walidacja danych 
 wejściowych. Funkcje te są uniwersalne i mogą być wykorzystywane w różnych częściach projektu, co pozwala na unikanie 
@@ -505,7 +500,9 @@ pozwala na ich elastyczne zastosowanie w całym projekcie. Przykładowa funkcja 
 		}
 \end{lstlisting}
 
-\subsection{Wstrzykiwanie zależności (Dependency Injection)}
+\clearpage
+
+\section{Wstrzykiwanie zależności (Dependency Injection)}
 
 Wstrzykiwanie zależności (ang. Dependency Injection) jest jednym z kluczowych wzorców projektowych, który pomaga 
 w utrzymaniu czystości kodu, jego modularności i testowalności. Wstrzykiwanie zależności odgrywa istotną rolę w 
@@ -521,7 +518,7 @@ Dagger, które jest wykorzystywane do automatycznego i efektywnego zarządzania 
 Dzięki Hilt, integracja z Androidem staje się łatwiejsza, a proces konfiguracji i wstrzykiwania zależności bardziej 
 intuicyjny i mniej czasochłonny.
 
-\subsubsection{Konfiguracja Hilt}
+\subsection{Konfiguracja Hilt}
 
 Konfiguracja Hilt dla tworzonej aplikacji polega na uruchomieniu kontenera wstrzykiwania zależności przez dodanie 
 adnotacji @HiltAndroidApp do klasy aplikacji. Adnotacja ta informuje Hilt o konieczności wygenerowania kodu 
@@ -549,7 +546,7 @@ Dzięki tej konfiguracji Hilt może automatycznie wstrzykiwać wszystkie zależn
 używanych w aplikacji. Ułatwia to zarządzanie złożonością kodu oraz umożliwia bardziej zwięzłą implementację 
 aplikacji.
 
-\subsubsection{Moduły Hilt}
+\subsection{Moduły Hilt}
 
 Jednym z kluczowych elementów Hilt jest definiowanie modułów za pomocą adnotacji @Module. Moduły te pozwalają 
 precyzyjnie określić, jakie obiekty powinny być dostarczane i w jakim cyklu życia mają istnieć. W poniższym listingu
@@ -619,12 +616,12 @@ danych wymagają różnych implementacji. Przykład implementacji modułu repozy
 	}
 \end{lstlisting}
 
-\subsubsection{Przykłady wstrzykiwania zależności z Hilt}
+\subsection{Przykłady wstrzykiwania zależności z Hilt}
 
 Repozytorium to kluczowy komponent, który abstrahuje logikę uwierzytelniania od reszty aplikacji. W 
 AuthenticationRepositoryImpl wykorzystujemy wcześniej zdefiniowane zależności, takie jak Auth i UserPreferences. 
 Dzięki adnotacji @Inject Hilt automatycznie dostarcza te zależności. Kod repozytorium znajduje się w listingu 
-\ref{AuthenticationRepositoryImpl}:
+\ref{AuthenticationRepositoryImpl}
 
 \begin{lstlisting}[language=Kotlin,caption=Implementacja AuthenticationRepository, label={AuthenticationRepositoryImpl}]
 	class AuthenticationRepositoryImpl @Inject constructor(
@@ -661,7 +658,8 @@ użyciu userPreferences.
 
 AuthViewModel wykorzystuje AuthenticationRepository, które zostało wstrzyknięte za pomocą Hilt. Dzięki temu ViewModel 
 jest odpowiedzialny wyłącznie za przetwarzanie danych dla interfejsu użytkownika, bez konieczności zarządzania 
-szczegółami implementacyjnymi repozytorium. Kod ViewModel przedstawiono w listingu \ref{AuthViewModelHilt}:
+szczegółami implementacyjnymi repozytorium. Kod ViewModel przedstawiono w listingu \ref{AuthViewModelHilt}
+\clearpage
 \begin{lstlisting}[language=Kotlin,caption=Implementacja AuthViewModel, label={AuthViewModelHilt}]
 	@HiltViewModel
 	class AuthViewModel @Inject constructor(
@@ -688,7 +686,7 @@ za tworzenie instancji repozytorium.
 
 Funkcja SignInScreen odpowiada za wyświetlenie ekranu logowania. Dzięki funkcji hiltViewModel() instancja 
 AuthViewModel jest automatycznie tworzona i dostarczana przez Hilt. W ten sposób uniknięto ręcznego zarządzania 
-cyklem życia ViewModel, a kod staje się bardziej przejrzysty. Kod funkcji znajduje się w listingu \ref{SignInScreenHilt}:
+cyklem życia ViewModel, a kod staje się bardziej przejrzysty. Kod funkcji znajduje się w listingu \ref{SignInScreenHilt}
 \begin{lstlisting}[language=Kotlin,caption=Implementacja AuthViewModel, label={SignInScreenHilt}]
 	@Composable
 	fun SignInScreen(
@@ -702,26 +700,34 @@ cyklem życia ViewModel, a kod staje się bardziej przejrzysty. Kod funkcji znaj
 W tej funkcji signInViewModel jest wykorzystywany do zarządzania stanem ekranu i obsługi zdarzeń, takich jak próba 
 logowania. Dzięki temu kod w funkcji Composable pozostaje skupiony na interfejsie użytkownika.
 
-\subsection{MVVM (Model-View-ViewModel)}
+\clearpage
+
+\section{MVVM (Model-View-ViewModel)}
 
 Model-View-ViewModel to popularny wzorzec architektoniczny stosowany w tworzeniu aplikacji, który pomaga w 
 organizacji kodu i rozdzieleniu odpowiedzialności pomiędzy różne warstwy aplikacji. Jego głównym celem
 jest zwiększenie modularności, łatwości testowania oraz oddzielenie logiki biznesowej od interfejsu użytkownika.
-
+\begin{samepage}
 \begin{enumerate}[label=\alph*), leftmargin=1.25cm]
 	\item Model reprezentuje warstwę danych i logiki biznesowej. Jest odpowiedzialny za zarządzanie danymi,
 	które mogą pochodzić z różnych źródeł, takich jak bazy danych, API czy pliki lokalne. Model nie zawiera
 	żadnej logiki związanej z interfejsem użytkownika ani sposobem prezentacji danych,
-	\item View (Widok) odpoawiada za warstwę prezentacji. Widok to interfejs użytkownika (UI), który jest
+	\item View (Widok) odpowiada za warstwę prezentacji. Widok to interfejs użytkownika (UI), który jest
 	odpowiedzialny za wyświetlenie danych i odbieranie interakcji od użytkownika. Widok powinien jedynie
 	reagować na dane dostarczane przez ViewModel. W android widokiem są komponenty Jetpack Compose,
 	\item ViewModel to warstwa pomiędzy modelem a widokiem. pobiera dane z modelu i przekształca je
 	w taki sposób, aby były gotowe do wyświetlenia w widoku. Ponadto zarządza stanem widoku (np. przechowywaniem
 	stanu aplikacji w przypadku zmiany orientacji ekranu).
 \end{enumerate}
+\end{samepage}
 
-\subsubsection{Model}
+\subsection{Model}
+W podrozdziale "Model" omówione zostaną kluczowe komponenty warstwy modelu w architekturze MVVM, odpowiedzialnej za 
+zarządzanie danymi. Zostaną przedstawione takie elementy jak DTO (Data Transfer Object), DAO (Data Access Object) 
+oraz repozytoria, które umożliwiają efektywne przechowywanie, dostęp i przetwarzanie danych, a także komunikację z 
+zewnętrznymi źródłami, takimi jak bazy danych czy API.
 
+\subsubsection{Data Transfer Object}
 Data Transfer Object (DTO) to wzorzec projektowy, który służy do przenoszenia danych między różnymi warstwami 
 aplikacji. DTO są zazwyczaj prostymi obiektami, które zawierają dane, ale nie posiadają logiki biznesowej. Głównym 
 celem DTO jest przenoszenie danych w sposób efektywny i umożliwiający łatwe zarządzanie. Przykładowy kod DTO jest 
@@ -752,10 +758,245 @@ JSON. Serializacja jest kluczowa, ponieważ w przypadku aplikacji komunikującyc
 Supabase, dane są często przesyłane w formacie JSON. Aby odpowiedź z API mogła zostać zamapowana na obiekt w 
 Kotlinie, musi być ona odpowiednio zserializowana.
 
+\subsubsection{Data Access Object}
 Warstwa dostępu do danych (DAO - Data Access Object) odpowiada za komunikację z bazą danych lub zewnętrznymi 
 źródłami danych, takimi jak API. Zastosowanie wzorca DAO pozwala na izolowanie logiki dostępu do danych od reszty 
 aplikacji, co ułatwia zarządzanie kodem, testowanie oraz utrzymanie aplikacji. Klasa DAO odpowiada za wykonanie 
 operacji związanych z pobieraniem, zapisywaniem lub aktualizowaniem danych w bazie danych lub serwisie zewnętrznym.
+Przykładowy kod DAO znajduje się w poniższym listingu \ref{SeriesDao}
+
+\begin{lstlisting}[language=Kotlin,caption=Data Transfer Object Series, label={SeriesDao}]
+	class SeriesDao @Inject constructor(private val supabaseClient: SupabaseClient) {
+
+    suspend fun getSeriesPaginated(offset: Int, limit: Int, searchQuery: String): List<Series> =
+        withContext(Dispatchers.IO) {
+            supabaseClient.postgrest.rpc(
+                "get_series_paginated", seriesParams(offset, limit, searchQuery)
+            ).decodeList<Series>()
+        }
+		// Inne metody
+		suspend fun getAllUserVolumes(seriesId: Int): List<Volume> = withContext(Dispatchers.IO) {
+        val response = supabaseClient.postgrest.rpc(
+            "get_user_volumes_by_series",
+            mapOf("p_series_id" to seriesId)
+        ).decodeList<Volume>()
+        response
+    }
+		suspend fun insertUserVolume(volumeToInsert: VolumeToInsert): Int? =
+        withContext(Dispatchers.IO) {
+            runCatching {
+                val result = supabaseClient.from("user_volumes")
+                    .upsert(volumeToInsert, onConflict = "profile_id, volume_id") {
+                        select(columns = Columns.list("id"))
+                    }.decodeList<VolumeResponse>()
+                result.firstOrNull()?.id
+            }.onFailure { e ->
+                e.message?.let { Log.e("InsertError", it) }
+            }.getOrNull()
+        }
+    suspend fun updateUserVolume(volumeToUpdate: VolumeToUpdate): Boolean =
+        withContext(Dispatchers.IO) {
+            runCatching {
+                supabaseClient.from("user_volumes").update(volumeToUpdate) {
+                    filter { eq("id", volumeToUpdate.id) }
+                }
+                true
+            }.onFailure { e ->
+                e.message?.let { Log.e("InsertError", it) }
+            }.getOrDefault(false)
+        }
+    suspend fun deleteUserVolume(userVolumeId: Int): Boolean =
+        withContext(Dispatchers.IO) {
+            runCatching {
+                supabaseClient.from("user_volumes").delete() {
+                    filter { eq("id", userVolumeId) }
+                }
+                true
+            }.onFailure { e ->
+                e.message?.let { Log.e("InsertError", it) }
+            }.getOrDefault(false)
+        }
+	}
+\end{lstlisting}
+W powyższym listingu przedstawiono implementację klasy SeriesDao oraz części jej metod. Metoda getSeriesPaginated 
+odpowiada za pobieranie z bazy danych listy serii książek z zastosowaniem paginacji, co pozwala uniknąć przeciążenia 
+aplikacji poprzez jednoczesne pobieranie zbyt dużych zbiorów danych. Odpowiedź z bazy danych jest następnie 
+dekodowana do instancji klasy Series, która jest serializowanym obiektem reprezentującym serię książek. Reszta metod 
+przedstawionych w powyższym listingu ma na celu realizację operacji CRUD (Create, Read, Update, Delete) na danych 
+użytkownika w kontekście tomów, które posiada w swojej kolekcji, lub które przeczytał.
+
+\subsubsection{Repozytorium}
+
+Repozytoria w architekturze MVVM odpowiadają za dostęp do danych, oddzielając logikę aplikacji od szczegółów 
+implementacji. Przykład repozytorium znajduje się na poniższym listingu \ref{seriesRepository}
+
+\begin{lstlisting}[language=Kotlin,caption=Interfejs SeriesRepository, label={seriesRepository}]
+	interface SeriesRepository {
+		suspend fun getSeries(page: Int, pageSize: Int, searchQuery: String): List<Series>
+		suspend fun getFollowedSeries(page: Int, pageSize: Int, sortByDate: Boolean, showFinished: Boolean): List<FollowedSeries>
+		suspend fun getSeriesInfo(seriesId: Int): SeriesInfo
+		suspend fun getSeriesById(seriesId: Int): Series
+		suspend fun getVolumes(seriesId: Int): List<Volume>
+		suspend fun getVolume(volumeId: Int): Volume
+		suspend fun followSeries(seriesId: Int): Boolean
+		suspend fun unfollowSeries(seriesId: Int): Boolean
+		suspend fun insertUserVolume(volumeToInsert: VolumeToInsert): Int?
+		suspend fun updateUserVolume(volumeToUpdate: VolumeToUpdate): Boolean
+		suspend fun deleteUserVolume(userVolumeId: Int): Boolean
+		suspend fun getUpcomingVolumes(page: Int, pageSize: Int): List<UpcomingVolume>
+	}
+\end{lstlisting}
+Interfejs SeriesRepository, definiuje kontrakt dla operacji związanych z zarządzaniem seriami książek oraz ich 
+tomami. Interfejs ten zawiera metody do pobierania list danych (getSeries, getFollowedSeries), wykonywania operacji 
+CRUD (followSeries, unfollowSeries, insertUserVolume, updateUserVolume, deleteUserVolume) oraz uzyskiwania 
+szczegółowych informacji (getSeriesInfo, getSeriesById, getVolume)
+
+Implementacją tego interfejsu jest klasa SeriesRepositoryImpl, która korzysta z DAO (SeriesDao) do bezpośredniej 
+komunikacji z bazą danych. Kod tej klasy znajduje się poniższym listingu \ref{seriesRepositoryImpl}
+\begin{lstlisting}[language=Kotlin,caption=Interfejs SeriesRepository, label={seriesRepositoryImpl}]
+class SeriesRepositoryImpl @Inject constructor(private val seriesDao: SeriesDao) :
+    SeriesRepository {
+
+    override suspend fun getSeries(page: Int, pageSize: Int, searchQuery: String): List<Series> {
+        val offset = page * pageSize
+        return seriesDao.getSeriesPaginated(offset, pageSize, searchQuery)
+    }
+
+	//inne metody
+
+	override suspend fun getVolumes(seriesId: Int): List<Volume> {
+        return seriesDao.getAllUserVolumes(seriesId)
+    }
+
+	override suspend fun insertUserVolume(volumeToInsert: VolumeToInsert): Int? {
+        return seriesDao.insertUserVolume(volumeToInsert)
+    }
+
+    override suspend fun updateUserVolume(volumeToUpdate: VolumeToUpdate): Boolean {
+        return seriesDao.updateUserVolume(volumeToUpdate)
+    }
+
+    override suspend fun deleteUserVolume(userVolumeId: Int): Boolean {
+        return seriesDao.deleteUserVolume(userVolumeId)
+    }
+}
+\end{lstlisting}
+W implementacji klasy SeriesRepositoryImpl można zauważyć bezpośrednie wykorzystanie metod zdefiniowanych w klasie 
+SeriesDao, które zostały szczegółowo omówione w poprzednim podrozdziale \textit{Data Access Object}. Przykładowo, 
+metoda getSeries oblicza odpowiedni offset dla paginacji i deleguje zadanie pobrania danych do metody 
+getSeriesPaginated z klasy DAO. Dzięki temu logika biznesowa i techniczne szczegóły operacji na danych są 
+odseparowane.
+
+Dzięki zastosowaniu wzorca repozytorium, logika dostępu do danych, zaimplementowana w warstwie DAO, zostaje 
+odseparowana od reszty aplikacji, co ułatwia testowanie i możliwość modyfikacji w przyszłości. Klasa 
+SeriesRepositoryImpl pełni tutaj rolę pośrednika, który wykorzystuje DAO do wykonywania operacji na danych, 
+jednocześnie zapewniając, że pozostałe warstwy aplikacji są odizolowane od szczegółów implementacyjnych, takich jak 
+konkretne zapytania do bazy danych.
+
+\subsection{ViewModel}
+
+ViewModel w Jetpack Compose pełni kluczową rolę w zarządzaniu stanem aplikacji i logiką biznesową w sposób 
+bezpieczny dla cyklu życia komponentów. W ViewModelu przechowywane są dane aplikacji, które mogą być dynamicznie 
+modyfikowane i aktualizowane w odpowiedzi na różne zdarzenia, takie jak akcje użytkownika czy zmiany w danych 
+zewnętrznych. Stan jest zazwyczaj reprezentowany za pomocą obiektów takich jak StateFlow lub LiveData, które 
+umożliwiają efektywne i reaktywne przekazywanie informacji do interfejsu użytkownika. Przykładowy kod
+ViewModelu znajduje się w poniższym listingu \ref{LibraryViewModel}
+
+\begin{lstlisting}[language=Kotlin,caption=Przykład klasy ViewModel dla biblioteki użytkownika, label={LibraryViewModel}]
+	@HiltViewModel
+	class LibraryViewModel @Inject constructor(
+		private val seriesRepository: SeriesRepository,
+		private val userPreferences: UserPreferences
+	) :
+		ViewModel() {
+	
+		private val _userSeries = MutableStateFlow<List<FollowedSeries>>(emptyList())
+		val userSeries: StateFlow<List<FollowedSeries>> = _userSeries
+
+		...
+
+		private val _libraryTabsState = MutableStateFlow(0)
+		val libraryTabsState: StateFlow<Int> = _libraryTabsState
+		
+		private var currentPage = 0
+		private val pageSize = 20
+		private var isLoading = false
+		private var isLastPage = false
+
+		private val _sortByDate = MutableStateFlow(true)
+		val sortByDate: StateFlow<Boolean> = _sortByDate
+	
+		private val _showFinished = MutableStateFlow(false)
+		val showFinished: StateFlow<Boolean> = _showFinished
+	
+		fun switchTab(index: Int) {
+			_libraryTabsState.value = index
+		}
+
+		fun fetchFollowedSeries() {
+			if (isLoading || isLastPage) return
+	
+			viewModelScope.launch {
+				isLoading = true
+				runCatching {
+					seriesRepository.getFollowedSeries(
+						page = currentPage,
+						pageSize = pageSize,
+						sortByDate = _sortByDate.value,
+						showFinished = _showFinished.value
+					)
+				}.onSuccess { newSeries ->
+					if (newSeries.size < pageSize) {
+						isLastPage = true
+					}
+					_userSeries.value += newSeries
+					currentPage++
+				}.onFailure { e ->
+					Log.e("SeriesViewModel", "Error fetching series", e)
+				}.also {
+					isLoading = false
+				}
+			}
+		}
+
+		...
+
+		fun updateSorting(sortByDate: Boolean) {
+			_sortByDate.value = sortByDate
+			viewModelScope.launch {
+				userPreferences.saveSortBy(sortByDate)
+				refreshSeries()
+			}
+		}
+	
+		fun updateShowFinished(showFinished: Boolean) {
+			_showFinished.value = showFinished
+			viewModelScope.launch {
+				userPreferences.saveShowFinished(showFinished)
+				refreshSeries()
+			}
+		}
+	}
+\end{lstlisting}
+Powyższy listing przedstawia klasę LibraryViewModel, do której wstrzykiwane są instancje SeriesRepository oraz 
+UserPreferences. Klasa ta pełni rolę pośrednika między warstwą danych a interfejsem użytkownika, zarządzając 
+stanem oraz logiką biznesową związaną z biblioteką użytkownika. W tej implementacji wykorzystano mechanizm 
+StateFlow z biblioteki Kotlin Coroutines, który pozwala na zarządzanie stanem aplikacji w sposób asynchroniczny 
+i reaktywny.
+
+Mechanizm StateFlow, oparty na Flow, umożliwia efektywne zarządzanie przepływem danych w aplikacji. Dzięki 
+asynchroniczności, wszystkie operacje wykonywane w tle nie blokują głównego wątku aplikacji, co przyczynia się 
+do płynności działania aplikacji. Dodatkowo, zmiany w strumieniach są automatycznie propagowane do obserwatorów, 
+co upraszcza logikę interfejsu użytkownika i eliminuje potrzebę ręcznego zarządzania stanem.
+
+W klasie LibraryViewModel zdefiniowano kilka zmiennych, które reprezentują strumienie stanu, takich jak 
+\_userSeries, \_libraryTabsState, \_sortByDate oraz \_showFinished. Prefiks \_ w nazwach zmiennych oznacza, że 
+są to zmienne wewnętrzne, modyfikowane wyłącznie w obrębie samej klasy. Na przykład, \_userSeries przechowuje 
+listę obserwowanych serii, która jest dynamicznie aktualizowana na podstawie danych zwracanych przez 
+repozytorium. Z kolei zmienne userSeries, które nie mają prefiksu \_, są publicznymi getterami, które 
+udostępniają stan zdefiniowany w zmiennych wewnętrznych, ale tylko do odczytu. Dzięki temu inne klasy mogą 
+obserwować zmiany w userSeries, ale nie mają możliwości bezpośredniej modyfikacji tego stanu, co zapewnia 
+enkapsulację i kontrolę nad danymi.
 
 \clearpage
 
@@ -769,6 +1010,10 @@ zaprogramowanie aplikacji na system android
 \addcontentsline{toc}{section}{Literatura}
 
 \begin{thebibliography}{4}
+	\bibitem{} https://kotlinlang.org/docs/home.html
+	\bibitem{} https://supabase.com/docs/reference/kotlin/introduction
+	\bibitem{} https://developer.android.com/develop/ui/compose/documentation
+	\bibitem{} https://m3.material.io/
 \end{thebibliography}
 
 \clearpage
