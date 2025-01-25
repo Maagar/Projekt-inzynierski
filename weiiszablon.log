@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.1.17)  24 JAN 2025 22:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.1.17)  25 JAN 2025 12:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -590,50 +590,55 @@ Overfull \hbox (52.08926pt too wide) in paragraph at lines 580--586
 \T1/lmr/m/n/12 gdzie do-star-czane za-le»-no-±ci b¦d¡ do-st¦pne. Przy-kªa-dowo, @In-stal-lIn(SingletonComponent::class)
  []
 
-[24] [25] [26] [27
+[24] [25]
+Overfull \hbox (11.9976pt too wide) in paragraph at lines 656--661
+\T1/lmr/m/n/12 Powy»szy kod przed-sta-wia de-fi-ni-cj¦ klasy Au-then-ti-ca-tion-Re-po-si-to-ry-Impl, w któ-rej wstrzy-
+ []
+
+[26] [27] [28] [29] [30
 
 ]
 
-LaTeX Warning: Empty `thebibliography' environment on input line 658.
+LaTeX Warning: Empty `thebibliography' environment on input line 772.
 
-[28
+[31
 
 ]
-Overfull \hbox (14.2264pt too wide) in paragraph at lines 662--662
+Overfull \hbox (14.2264pt too wide) in paragraph at lines 776--776
 [][]| 
  []
 
 
-Overfull \hbox (14.2264pt too wide) in paragraph at lines 662--662
+Overfull \hbox (14.2264pt too wide) in paragraph at lines 776--776
 [][]| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 662--662
+Underfull \hbox (badness 10000) in paragraph at lines 776--776
 [][]
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[29] (weiiszablon.aux)
+[32] (weiiszablon.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 10281 strings out of 474486
- 164375 string characters out of 5743755
- 2148542 words of memory out of 5000000
- 32422 multiletter control sequences out of 15000+600000
+ 10382 strings out of 474486
+ 166014 string characters out of 5743755
+ 2161542 words of memory out of 5000000
+ 32523 multiletter control sequences out of 15000+600000
  610611 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  82i,13n,91p,653b,1869s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on weiiszablon.pdf (29 pages, 1156174 bytes).
+Output written on weiiszablon.pdf (32 pages, 1172697 bytes).
 PDF statistics:
- 146 PDF objects out of 1000 (max. 8388607)
+ 156 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -621,6 +621,87 @@ danych wymagają różnych implementacji. Przykład implementacji modułu repozy
 
 \subsubsection{Przykłady wstrzykiwania zależności z Hilt}
 
+Repozytorium to kluczowy komponent, który abstrahuje logikę uwierzytelniania od reszty aplikacji. W 
+AuthenticationRepositoryImpl wykorzystujemy wcześniej zdefiniowane zależności, takie jak Auth i UserPreferences. 
+Dzięki adnotacji @Inject Hilt automatycznie dostarcza te zależności. Kod repozytorium znajduje się w listingu 
+\ref{AuthenticationRepositoryImpl}:
+
+\begin{lstlisting}[language=Kotlin,caption=Implementacja AuthenticationRepository, label={AuthenticationRepositoryImpl}]
+	class AuthenticationRepositoryImpl @Inject constructor(
+    private val auth: Auth,
+    private val userPreferences: UserPreferences
+) : AuthenticationRepository {
+
+    override suspend fun signIn(email: String, password: String): Boolean {
+        return runCatching {
+            auth.signInWith(Email) {
+                this.email = email
+                this.password = password
+            }
+            true
+        }.getOrDefault(false)
+    }
+
+	override suspend fun saveToken() {
+        val accessToken = auth.currentAccessTokenOrNull()
+        if (accessToken != null) {
+            userPreferences.saveUserSession(accessToken)
+        }
+    }
+
+	...
+
+}
+\end{lstlisting}
+Powyższy kod przedstawia definicję klasy AuthenticationRepositoryImpl, w której wstrzykiwane są zależności: klient 
+auth z modułu SupabaseModule oraz preferencje użytkownika z modułu DataStoreModule. Na przykładzie dwóch metod 
+pokazano, jak można korzystać z tych zależności po ich wstrzyknięciu. Metoda signIn wykorzystuje klienta auth do 
+obsługi logowania użytkownika, natomiast metoda saveToken zapisuje token sesji w preferencjach użytkownika przy 
+użyciu userPreferences.
+
+AuthViewModel wykorzystuje AuthenticationRepository, które zostało wstrzyknięte za pomocą Hilt. Dzięki temu ViewModel 
+jest odpowiedzialny wyłącznie za przetwarzanie danych dla interfejsu użytkownika, bez konieczności zarządzania 
+szczegółami implementacyjnymi repozytorium. Kod ViewModel przedstawiono w listingu \ref{AuthViewModelHilt}:
+\begin{lstlisting}[language=Kotlin,caption=Implementacja AuthViewModel, label={AuthViewModelHilt}]
+	@HiltViewModel
+	class AuthViewModel @Inject constructor(
+		private val authenticationRepository: AuthenticationRepository
+	): ViewModel() {
+		fun onSignIn() {
+        viewModelScope.launch{
+            _signInResult.value = authenticationRepository.signIn(
+                email = _email.value,
+                password = _password.value
+            )
+            if (_signInResult.value!!) {
+                authenticationRepository.saveToken()
+            }
+        }
+    }
+	... 
+	}
+\end{lstlisting}
+Dzięki Hilt, AuthViewModel otrzymuje AuthenticationRepository bez konieczności jego ręcznego tworzenia. To pozwala 
+na oddzielenie logiki aplikacji od szczegółów implementacyjnych repozytorium. W przypadku potrzeby zmiany na inne
+źródło danych wystarczy zmienić tylko moduł Hilt. AuthViewModel pozostałby bez zmian, ponieważ nie jest odpowiedzialny 
+za tworzenie instancji repozytorium.
+
+Funkcja SignInScreen odpowiada za wyświetlenie ekranu logowania. Dzięki funkcji hiltViewModel() instancja 
+AuthViewModel jest automatycznie tworzona i dostarczana przez Hilt. W ten sposób uniknięto ręcznego zarządzania 
+cyklem życia ViewModel, a kod staje się bardziej przejrzysty. Kod funkcji znajduje się w listingu \ref{SignInScreenHilt}:
+\begin{lstlisting}[language=Kotlin,caption=Implementacja AuthViewModel, label={SignInScreenHilt}]
+	@Composable
+	fun SignInScreen(
+		toSignUpScreen: (() -> Unit),
+		toHomeScreen: (() -> Unit),
+		signInViewModel: AuthViewModel = hiltViewModel(),
+	) {
+		...
+	}
+\end{lstlisting}
+W tej funkcji signInViewModel jest wykorzystywany do zarządzania stanem ekranu i obsługi zdarzeń, takich jak próba 
+logowania. Dzięki temu kod w funkcji Composable pozostaje skupiony na interfejsie użytkownika.
+
 \subsection{MVVM (Model-View-ViewModel)}
 
 Model-View-ViewModel to popularny wzorzec architektoniczny stosowany w tworzeniu aplikacji, który pomaga w 
@@ -641,7 +722,40 @@ jest zwiększenie modularności, łatwości testowania oraz oddzielenie logiki b
 
 \subsubsection{Model}
 
-W poniższym listingu 
+Data Transfer Object (DTO) to wzorzec projektowy, który służy do przenoszenia danych między różnymi warstwami 
+aplikacji. DTO są zazwyczaj prostymi obiektami, które zawierają dane, ale nie posiadają logiki biznesowej. Głównym 
+celem DTO jest przenoszenie danych w sposób efektywny i umożliwiający łatwe zarządzanie. Przykładowy kod DTO jest 
+zaprezentowany w poniższym listingu \ref{SeriesDTO}
+
+\begin{lstlisting}[language=Kotlin,caption=Data Transfer Object Series, label={SeriesDTO}]
+@Serializable
+data class Series(
+    val id: Int,
+    val created_at: String,
+    val title: String,
+    val main_cover_url: String,
+    val is_single_volume: Boolean,
+    val release_date: LocalDate,
+    val synopsis: String,
+    var total_volumes_released: Int,
+    var is_following: Boolean
+)
+\end{lstlisting}
+Powyższy kod przedstawia klasę Series. Zawiera ona podstawowe informacje o serii książek, takie jak unikalny 
+identyfikator (id), tytuł serii (title), data wydania (release\_date), streszczenie fabuły (synopsis), a także 
+dodatkowe informacje jak liczba wydanych tomów (total\_volumes\_released) oraz status obserwowania serii przez 
+użytkownika (is\_following). Wszystkie te dane są przechowywane w formacie, który może być łatwo przesyłany między 
+różnymi warstwami aplikacji, takimi jak repozytoria, ViewModel czy interfejs użytkownika.
+
+Klasa Series jest oznaczona adnotacją @Serializable, co sprawia, że może być łatwo przekształcana do i z formatu 
+JSON. Serializacja jest kluczowa, ponieważ w przypadku aplikacji komunikujących się z zewnętrznymi API, jak np. 
+Supabase, dane są często przesyłane w formacie JSON. Aby odpowiedź z API mogła zostać zamapowana na obiekt w 
+Kotlinie, musi być ona odpowiednio zserializowana.
+
+Warstwa dostępu do danych (DAO - Data Access Object) odpowiada za komunikację z bazą danych lub zewnętrznymi 
+źródłami danych, takimi jak API. Zastosowanie wzorca DAO pozwala na izolowanie logiki dostępu do danych od reszty 
+aplikacji, co ułatwia zarządzanie kodem, testowanie oraz utrzymanie aplikacji. Klasa DAO odpowiada za wykonanie 
+operacji związanych z pobieraniem, zapisywaniem lub aktualizowaniem danych w bazie danych lub serwisie zewnętrznym.
 
 \clearpage
 

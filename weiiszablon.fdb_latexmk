@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1737754036.97101 "c:/Users/magar/Desktop/Praca/weiiszablon.tex" "weiiszablon.pdf" "weiiszablon" 1737754038.03059 0
+["pdflatex"] 1737806301.13968 "c:/Users/magar/Desktop/Praca/weiiszablon.tex" "weiiszablon.pdf" "weiiszablon" 1737806302.20916 0
   "C:/Users/magar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1737727486 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/magar/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1737120609 24225046 e9900b02ab46d04496da6329b364d91f ""
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1256929440 2375 baa924870cfb487815765f9094cf3728 ""
@@ -95,15 +95,15 @@
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/tex/latex/trimspaces/trimspaces.sty" 1253169183 1380 971a51b00a14503ddf754cab24c3f209 ""
   "C:/Users/magar/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "auxiliary/logoweii.jpg" 1737120221 629754 fc53d0837ea5b2ed4c7ef8557a9c1d89 ""
-  "c:/Users/magar/Desktop/Praca/weiiszablon.tex" 1737754035 36891 dcced91e97040f517d57dd2368032c0d ""
+  "c:/Users/magar/Desktop/Praca/weiiszablon.tex" 1737806300 43103 62f570e804c04779df58a00011407342 ""
   "figures/header.png" 1737727075 89886 41757eab65965268c69e6b0512c09cc2 ""
   "figures/karta.png" 1737727042 44692 98d42e5ff3f46d7e576d09f4b77f62d9 ""
   "figures/schemat1.png" 1737398815 129191 4a8014e68aa20cc5bdaac391f6a368ae ""
   "figures/struktura.png" 1737561575 20594 befae16be8771d746517722554e624db ""
-  "weiiszablon.aux" 1737754037 8122 c62f1c924de88d2c5cf81b8437dcbc82 "pdflatex"
+  "weiiszablon.aux" 1737806302 9116 c884f74c23ed6d75ea151a9b1ccec578 "pdflatex"
   "weiiszablon.sty" 1737727482 13628 d313aed6b2d1c568c13d4a0b8622957e ""
-  "weiiszablon.tex" 1737754035 36891 dcced91e97040f517d57dd2368032c0d ""
-  "weiiszablon.toc" 1737754037 2992 75f738afca83d7b763c73a877cd5b43c "pdflatex"
+  "weiiszablon.tex" 1737806300 43103 62f570e804c04779df58a00011407342 ""
+  "weiiszablon.toc" 1737806302 2992 f00673b829c388358c88876aed0dea7b "pdflatex"
   (generated)
   "weiiszablon.aux"
   "weiiszablon.log"
