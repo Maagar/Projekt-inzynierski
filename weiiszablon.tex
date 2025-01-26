@@ -316,33 +316,33 @@ serwera.
 
 Kod przykładowej funkcji bazy danych znajduje się w listingu \ref{sqlFunction}
 
-	\begin{lstlisting}[language=SQL,caption=kod funkcji get\_volume\_by\_id, label={sqlFunction}]
-		CREATE OR REPLACE FUNCTION public.get_volume_by_id(p_volume_id bigint)
-		RETURNS TABLE(id bigint, title text, cover_url text, volume_number smallint, user_volume_id bigint, release_date timestamp with time zone, times_read smallint, owned boolean, synopsis text, read_date timestamp with time zone)
-		LANGUAGE plpgsql
-	   AS $function$
-	   BEGIN
-		   RETURN QUERY
-		   SELECT 
-			   v.id,
-			   v.title,
-			   v.cover_url,
-			   v.volume_number,
-			   uv.id AS user_volume_id,
-			   v.release_date,
-			   COALESCE(uv.times_read, 0) AS times_read,
-			   COALESCE(uv.owned, false) AS owned,
-			   v.synopsis,
-			   uv.read_date
-		   FROM 
-			   volumes v
-		   LEFT JOIN 
-			   user_volumes uv ON v.id = uv.volume_id
-		   WHERE 
-			   v.id = p_volume_id;
-	   END;
-	   $function$;
-	\end{lstlisting}
+\begin{lstlisting}[language=SQL,caption=kod funkcji get\_volume\_by\_id, label={sqlFunction}]
+	CREATE OR REPLACE FUNCTION public.get_volume_by_id(p_volume_id bigint)
+	RETURNS TABLE(id bigint, title text, cover_url text, volume_number smallint, user_volume_id bigint, release_date timestamp with time zone, times_read smallint, owned boolean, synopsis text, read_date timestamp with time zone)
+	LANGUAGE plpgsql
+	AS $function$
+	BEGIN
+		RETURN QUERY
+		SELECT 
+			v.id,
+			v.title,
+			v.cover_url,
+			v.volume_number,
+			uv.id AS user_volume_id,
+			v.release_date,
+			COALESCE(uv.times_read, 0) AS times_read,
+			COALESCE(uv.owned, false) AS owned,
+			v.synopsis,
+			uv.read_date
+		FROM 
+			volumes v
+		LEFT JOIN 
+			user_volumes uv ON v.id = uv.volume_id
+		WHERE 
+			v.id = p_volume_id;
+	END;
+	$function$;
+\end{lstlisting}
 Funkcja ta pozwala na podstawie identyfikatora pobrać z bazy danych informacje o wybranym tomie książki (volume), z bazy
 danych. Funkcja zwraca wynik w postaci teabeli zawierającej dane o tomie oraz dodatkowe informacje związane z użytkownikiem
 jeżeli są dostępne, takie jak pobrane z tabeli user\_volumes, times\_read informujące o tym ile razy użytkownik przeczytał
@@ -352,6 +352,29 @@ domyślnymi wartościami, takimi jak 0 dla liczby przeczytań czy false dla stat
 wykorzystaniem funkcji COALESCE, której użycie można zaobserować w liniach 14 i 15.
 
 \subsection{RLS (Row Level Security)}
+
+Row-Level Security (RLS) to technika zabezpieczania danych na poziomie wierszy w bazie danych, która pozwala 
+kontrolować, które wiersze są dostępne dla poszczególnych użytkowników. Dzięki RLS, można definiować zasady 
+dostępu do danych w sposób precyzyjny, np. na podstawie ról użytkowników, zapewniając większą elastyczność i 
+bezpieczeństwo. RLS pozwala na implementację polityk, które działają bez konieczności wprowadzania dodatkowej 
+logiki w aplikacji, co upraszcza zarządzanie dostępem do danych. Przykładowa definicja polityki RLS znajduje się
+w poniższym listingu \ref{rlsPolicy}
+
+\begin{lstlisting}[language=SQL,caption=Polityka RLS "Enable delete for users based on user\_id", label={rlsPolicy}]
+	alter policy "Enable delete for users based on user_id"
+	on "public"."user_volumes"
+	to authenticated
+	using (
+		(( SELECT auth.uid() AS uid) = profile_id)
+	);
+\end{lstlisting}
+Powyższy kod przedstawia przykład polityki RLS, która umożliwia użytkownikom usuwanie danych z tabeli 
+user\_volumes tylko wtedy, gdy ich identyfikator użytkownika (profile\_id) odpowiada aktualnie zalogowanemu 
+użytkownikowi. Polityka ta jest przypisana do roli authenticated, co oznacza, że tylko uwierzytelnieni 
+użytkownicy mogą wykonywać operację usuwania. Warunek w klauzuli using zapewnia, że dostęp do wierszy jest 
+restrykcyjnie kontrolowany na poziomie wierszy, co pozwala na bezpieczne zarządzanie danymi w aplikacji bez 
+konieczności implementowania dodatkowej logiki w kodzie aplikacji.
+
 
 \clearpage
 
@@ -993,10 +1016,102 @@ W klasie LibraryViewModel zdefiniowano kilka zmiennych, które reprezentują str
 \_userSeries, \_libraryTabsState, \_sortByDate oraz \_showFinished. Prefiks \_ w nazwach zmiennych oznacza, że 
 są to zmienne wewnętrzne, modyfikowane wyłącznie w obrębie samej klasy. Na przykład, \_userSeries przechowuje 
 listę obserwowanych serii, która jest dynamicznie aktualizowana na podstawie danych zwracanych przez 
-repozytorium. Z kolei zmienne userSeries, które nie mają prefiksu \_, są publicznymi getterami, które 
+repozytorium. Z kolei zmienne, które nie mają prefiksu \_, są publicznymi getterami, które 
 udostępniają stan zdefiniowany w zmiennych wewnętrznych, ale tylko do odczytu. Dzięki temu inne klasy mogą 
-obserwować zmiany w userSeries, ale nie mają możliwości bezpośredniej modyfikacji tego stanu, co zapewnia 
-enkapsulację i kontrolę nad danymi.
+jedynie obserwować zmiany stanu, bez możliwości jego bezpośredniej modyfikacji. Takie podejście gwarantuje 
+enkapsulację oraz pełną kontrolę nad procesem zarządzania danymi.
+
+Funkcje w ViewModelu są zazwyczaj zaprojektowane jako bezstanowe operacje lub metody, które modyfikują 
+wewnętrzne strumienie stanu. Na przykład w klasie LibraryViewModel funkcje takie jak fetchFollowedSeries 
+odpowiadają za pobieranie danych z repozytorium i aktualizowanie odpowiednich zmiennych stanu, takich jak 
+\_userSeries. Dzięki zastosowaniu viewModelScope operacje te są wykonywane asynchronicznie, co zapobiega 
+blokowaniu głównego wątku aplikacji.
+
+\subsection{View}
+
+Widoki odpowiadają za prezentację danych użytkownikowi i reagowanie na jego interakcje. W Jetpack Compose widoki 
+są definiowane za pomocą funkcji kompozycyjnych, które w sposób deklaratywny opisują strukturę interfejsu 
+użytkownika. Dzięki połączeniu z warstwą ViewModel, widoki mogą dynamicznie aktualizować swoją zawartość w 
+odpowiedzi na zmiany stanu aplikacji, zachowując jednocześnie prostotę i czytelność implementacji. W poniższym
+listingu \ref{LibraryScreen} przedstawiona jest przykładowa implementacja widoku.
+\begin{lstlisting}[language=Kotlin,caption=Kod widoku LibraryScreen , label={LibraryScreen}]
+	@Composable
+	fun LibraryScreen(
+		seriesViewModel: SeriesViewModel,
+		libraryViewModel: LibraryViewModel = hiltViewModel(),
+		toSeriesScreen: (() -> Unit),
+		toVolumeScreen: (() -> Unit)
+	) {
+		val libraryTabsState by libraryViewModel.libraryTabsState.collectAsState()
+		val sortByDate by libraryViewModel.sortByDate.collectAsState()
+		val showFinished by libraryViewModel.showFinished.collectAsState()
+		var showBottomSheet by remember { mutableStateOf(false) }
+		val sheetState = rememberModalBottomSheetState()
+	
+		Box(modifier = Modifier.fillMaxSize()) {
+			Column(
+				horizontalAlignment = Alignment.CenterHorizontally,
+				verticalArrangement = Arrangement.Top
+			) {
+				TabRow(
+					state = libraryTabsState,
+					titles = listOf(
+						stringResource(R.string.library).uppercase(),
+						stringResource(R.string.upcoming)
+					),
+					onTabClick = { newIndex ->
+						libraryViewModel.switchTab(newIndex)
+					})
+				if (libraryTabsState == 0) {Library(seriesViewModel, libraryViewModel, toSeriesScreen)} 
+				else if (libraryTabsState == 1) {Upcoming(seriesViewModel, libraryViewModel, toSeriesScreen, toVolumeScreen)}
+			}
+			if (libraryTabsState == 0) {
+				FloatingActionButton(
+					modifier = Modifier
+						.align(Alignment.BottomEnd)
+						.padding(16.dp),
+					onClick = { showBottomSheet = true }) {
+					Icon(painterResource(R.drawable.filter_list), contentDescription = null)
+				}
+			}
+			if (showBottomSheet) {
+				FilterBottomSheet(
+					sheetState,
+					{ showBottomSheet = false },
+					sortByDate,
+					showFinished,
+					onSortByChange = {
+						libraryViewModel.updateSorting(!sortByDate)
+						libraryViewModel.refreshSeries()
+					},
+					onShowFinishedChange = {
+						libraryViewModel.updateShowFinished(!showFinished)
+						libraryViewModel.refreshSeries()
+					})
+			}
+		}
+	}
+\end{lstlisting}
+Powyższy kod przedstawia widok LibraryScreen, który integruje dane dostarczane przez ViewModele z interfejsem 
+użytkownika w Jetpack Compose. Funkcja kompozycyjna korzysta z LibraryViewModel oraz SeriesViewModel, aby 
+zapewnić dostęp do stanów i logiki związanej z biblioteką użytkownika. Wykorzystanie metody collectAsState() 
+pozwala na automatyczne odświeżanie elementów interfejsu w odpowiedzi na zmiany w strumieniach stanu.
+
+Zmienna libraryTabsState oraz pozostałe stany, takie jak sortByDate i showFinished, są przekazywane do widoku 
+bezpośrednio jako obserwowalne strumienie danych. Dzięki temu widok jest w pełni zsynchronizowany z aktualnym 
+stanem aplikacji, a wszelkie zmiany wprowadzane w ViewModelu natychmiast znajdują odzwierciedlenie w interfejsie 
+użytkownika. Podejście to pozwala na uproszczenie logiki w samym widoku oraz minimalizuje ryzyko problemów 
+związanych z ręcznym zarządzaniem stanem.
+
+Widok został zaprojektowany modularnie, z wykorzystaniem elementów takich jak TabRow, które odpowiadają za 
+przełączanie między zakładkami. Przykład pokazuje również zastosowanie przycisku FloatingActionButton, który 
+umożliwia użytkownikowi otwarcie dolnego arkusza (BottomSheet) służącego do filtrowania wyników. Warto zauważyć, 
+że funkcje takie jak switchTab() oraz updateSorting() i updateShowFinished() są wywoływane bezpośrednio z widoku, 
+co upraszcza przekazywanie akcji użytkownika do warstwy logiki biznesowej.
+
+\clearpage
+
+\section{Nawigacja}
 
 \clearpage
 

@@ -36,5 +36,7 @@
 \contentsline {subsubsection}{\numberline {7.1.2}Data Access Object}{\footnotesize 29}{}%
 \contentsline {subsubsection}{\numberline {7.1.3}Repozytorium}{\footnotesize 31}{}%
 \contentsline {subsection}{\numberline {7.2}ViewModel}{\footnotesize 33}{}%
-\contentsline {section}{\numberline {8}Podsumowanie}{\footnotesize 36}{}%
-\contentsline {section}{Literatura}{\footnotesize 37}{}%
+\contentsline {subsection}{\numberline {7.3}View}{\footnotesize 35}{}%
+\contentsline {section}{\numberline {8}Nawigacja}{\footnotesize 38}{}%
+\contentsline {section}{\numberline {9}Podsumowanie}{\footnotesize 39}{}%
+\contentsline {section}{Literatura}{\footnotesize 40}{}%

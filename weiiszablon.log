@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.1.17)  25 JAN 2025 23:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.1.17)  26 JAN 2025 22:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -560,7 +560,7 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 <figures/struktura.png, id=66, 237.88875pt x 326.72063pt>
 File: figures/struktura.png Graphic file (type png)
 <use figures/struktura.png>
-Package pdftex.def Info: figures/struktura.png  used on input line 366.
+Package pdftex.def Info: figures/struktura.png  used on input line 389.
 (pdftex.def)             Requested size: 237.88815pt x 326.71982pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -568,42 +568,42 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [18
 
  <./figures/struktura.png>] [19]
-Overfull \hbox (8.48419pt too wide) in paragraph at lines 409--415
+Overfull \hbox (8.48419pt too wide) in paragraph at lines 432--438
 []\T1/lmr/m/n/12 Dzi¦ki wy-ko-rzy-sta-niu bi-blio-teki navigation-compose, fol-der "na-vi-ga-tion"umo»liwia
  []
 
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <11> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 427.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 450.
 [20]
 <figures/karta.png, id=79, 99.37125pt x 142.28156pt>
 File: figures/karta.png Graphic file (type png)
 <use figures/karta.png>
-Package pdftex.def Info: figures/karta.png  used on input line 463.
+Package pdftex.def Info: figures/karta.png  used on input line 486.
 (pdftex.def)             Requested size: 99.371pt x 142.2812pt.
 
-Overfull \hbox (11.16881pt too wide) in paragraph at lines 463--464
+Overfull \hbox (11.16881pt too wide) in paragraph at lines 486--487
 [][] 
  []
 
 <figures/header.png, id=80, 294.34969pt x 182.93344pt>
 File: figures/header.png Graphic file (type png)
 <use figures/header.png>
-Package pdftex.def Info: figures/header.png  used on input line 468.
+Package pdftex.def Info: figures/header.png  used on input line 491.
 (pdftex.def)             Requested size: 294.34895pt x 182.93298pt.
 
-Overfull \hbox (29.73563pt too wide) in paragraph at lines 468--469
+Overfull \hbox (29.73563pt too wide) in paragraph at lines 491--492
 [][] 
  []
 
 [21 <./figures/karta.png> <./figures/header.png>] [22] [23
 
 ]
-Overfull \hbox (52.08926pt too wide) in paragraph at lines 577--583
+Overfull \hbox (52.08926pt too wide) in paragraph at lines 600--606
 \T1/lmr/m/n/12 gdzie do-star-czane za-le»-no-±ci b¦d¡ do-st¦pne. Przy-kªa-dowo, @In-stal-lIn(SingletonComponent::class)
  []
 
 [24] [25]
-Overfull \hbox (11.9976pt too wide) in paragraph at lines 653--658
+Overfull \hbox (11.9976pt too wide) in paragraph at lines 676--681
 \T1/lmr/m/n/12 Powy»szy kod przed-sta-wia de-fi-ni-cj¦ klasy Au-then-ti-ca-tion-Re-po-si-to-ry-Impl, w któ-rej wstrzy-
  []
 
@@ -611,29 +611,31 @@ Overfull \hbox (11.9976pt too wide) in paragraph at lines 653--658
 
 ] [28
 
-] [29] [30] [31] [32] [33] [34] [35] [36
+] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38
 
-] [37
+] [39
+
+] [40
 
 ]
-Overfull \hbox (14.2264pt too wide) in paragraph at lines 1021--1021
+Overfull \hbox (14.2264pt too wide) in paragraph at lines 1136--1136
 [][]| 
  []
 
 
-Overfull \hbox (14.2264pt too wide) in paragraph at lines 1021--1021
+Overfull \hbox (14.2264pt too wide) in paragraph at lines 1136--1136
 [][]| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1021--1021
+Underfull \hbox (badness 10000) in paragraph at lines 1136--1136
 [][]
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[38] (weiiszablon.aux)
+[41] (weiiszablon.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -644,17 +646,17 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 10579 strings out of 474486
- 168970 string characters out of 5743755
+ 10681 strings out of 474486
+ 170607 string characters out of 5743755
  2571542 words of memory out of 5000000
- 32719 multiletter control sequences out of 15000+600000
+ 32821 multiletter control sequences out of 15000+600000
  614873 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  82i,13n,91p,653b,1869s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/magar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on weiiszablon.pdf (38 pages, 1214506 bytes).
+Output written on weiiszablon.pdf (41 pages, 1227564 bytes).
 PDF statistics:
- 182 PDF objects out of 1000 (max. 8388607)
+ 191 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
