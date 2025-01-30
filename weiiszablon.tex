@@ -24,10 +24,19 @@
 
 \supervisor{dr inż. Mariusz Mączka}
 
-\supervisorEN{Dr. Eng. Mariusz Mączka}
+\supervisorEN{Ph.D., D.Sc.}
 
-\abstract{Treść streszczenia po polsku}
-\abstractEN{Treść streszczenia po angielsku}
+\abstract{Celem pracy było zaprojektowanie i implementacja mobilnej aplikacji do zarządzania osobistą biblioteką 
+książek. Aplikacja została stworzona z wykorzystaniem Jetpack Compose jako frameworka UI oraz architektury MVVM 
+w celu zapewnienia czytelności i skalowalności kodu. Backend aplikacji został oparty na Supabase, oferującym bazę 
+danych PostgreSQL oraz autoryzację użytkowników. Aplikacja umożliwia przeglądanie, śledzenie postępów 
+czytelniczych oraz organizowanie kolekcji książek. Praca obejmuje analizę technologii i proces implementacji}
+\abstractEN{The aim of this thesis was to design and implement a mobile application for managing a personal book 
+library. The application was developed using Jetpack Compose as the UI framework and the MVVM architecture to 
+ensure code readability and scalability. The backend of the application is based on Supabase, which provides a 
+PostgreSQL database and user authentication. The application allows users to browse books, track reading 
+progress, and organize their collections. The thesis includes an analysis of the technologies used and the 
+implementation process.}
 
 \begin{document}
 
@@ -149,12 +158,12 @@ Dzięki podejściu opartemu na deklaratywnej reaktywności, widoki automatycznie
 zmiany danych, co eliminuje konieczność ręcznego zarządzania aktualizacjami interfejsu użytkownika.
 
 W Jetpack Compose funkcje kompozycyjne (ang. composable functions) stanowią podstawę tworzenia interfejsu 
-użytkownika. Są to specjalne funkcje oznaczone adnotacją @Composable, które pozwalają na deklaratywne definiowanie 
+użytkownika. Są to specjalne funkcje oznaczone adnotacją \textit{@Composable}, które pozwalają na deklaratywne definiowanie 
 i łączenie elementów UI. Funkcje kompozycyjne w Jetpack Compose działają na zasadzie deklaratywnego określania 
 struktury i zawartości interfejsu użytkownika, zamiast szczegółowego opisywania sposobu jego wyświetlania. Co 
 umożliwia koncentrację na logice aplikacji, a nie na szczegółach implementacji interfejsu. Każda funkcja 
 kompozycyjna może zawierać inne funkcje kompozycyjne, tworząc w ten sposób złożone i hierarchiczne struktury UI 
-w sposób naturalny i łatwy do zrozumienia. Takie podejście umożliwia tworzeniee intuicyjnych, skalowalnych i łatwych 
+w sposób naturalny i łatwy do zrozumienia. Takie podejście umożliwia tworzenie intuicyjnych, skalowalnych i łatwych 
 w utrzymaniu aplikacji.
 
 Jetpack Compose został wybrany, ponieważ jest rozwiązaniem w pełni zintegrowanym z Androidem, 
@@ -224,7 +233,7 @@ na temat bazy danych jest ukazane na diagramie ERD wygenerowanym w Supabase na r
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=1\textwidth]{figures/schemat1.png}
+	\includegraphics[width=1\textwidth]{figures/schematBazyDanych.png}
 	\caption{Schemat bazy danych}
 \label{Fig:schemat}
 \end{figure}
@@ -344,7 +353,7 @@ Kod przykładowej funkcji bazy danych znajduje się w listingu \ref{sqlFunction}
 	$function$;
 \end{lstlisting}
 Funkcja ta pozwala na podstawie identyfikatora pobrać z bazy danych informacje o wybranym tomie książki (volume), z bazy
-danych. Funkcja zwraca wynik w postaci teabeli zawierającej dane o tomie oraz dodatkowe informacje związane z użytkownikiem
+danych. Funkcja zwraca wynik w postaci tabeli zawierającej dane o tomie oraz dodatkowe informacje związane z użytkownikiem
 jeżeli są dostępne, takie jak pobrane z tabeli user\_volumes, times\_read informujące o tym ile razy użytkownik przeczytał
 dany tom. Może wystąpić sytuacja, w której pobierany tom nie ma odpowiadającego rekordu w tabeli user\_volumes, ponieważ 
 użytkownik nie oznaczył go jako przeczytanego ani posiadanego. W takim przypadku dane użytkownika zostaną uzupełnione 
@@ -544,7 +553,7 @@ intuicyjny i mniej czasochłonny.
 \subsection{Konfiguracja Hilt}
 
 Konfiguracja Hilt dla tworzonej aplikacji polega na uruchomieniu kontenera wstrzykiwania zależności przez dodanie 
-adnotacji @HiltAndroidApp do klasy aplikacji. Adnotacja ta informuje Hilt o konieczności wygenerowania kodu 
+adnotacji \textit{@HiltAndroidApp} do klasy aplikacji. Adnotacja ta informuje Hilt o konieczności wygenerowania kodu 
 potrzebnego do zarządzania zależnościami w całej aplikacji. Przykład konfiguracji został zaprezentowany w poniższym 
 listingu \ref{hiltAndroidApp}:
 
@@ -553,15 +562,15 @@ listingu \ref{hiltAndroidApp}:
 		class BookTrackerApplication: Application() {
 		}
 \end{lstlisting}
-Dzięki zastosowaniu @HiltAndroidApp, Hilt automatycznie uruchamia kontener DI (Dependency Injection) podczas startu 
+Dzięki zastosowaniu \textit{@HiltAndroidApp}, Hilt automatycznie uruchamia kontener DI (Dependency Injection) podczas startu 
 aplikacji, umożliwiając wstrzykiwanie zależności w różnych komponentach, takich jak modele widoków czy funkcje 
 kompozycyjne.
 
-Adnotacja @AndroidEntryPoint jest kluczowym elementem konfiguracji Hilt. Informuje ona system, że dana klasa 
+Adnotacja \textit{@AndroidEntryPoint} jest kluczowym elementem konfiguracji Hilt. Informuje ona system, że dana klasa 
 powinna być objęta mechanizmem wstrzykiwania zależności. Dzięki temu Hilt automatycznie przygotowuje kontener DI i 
-udostępnia zadeklarowane zależności, które można wstrzykiwać za pomocą adnotacji @Inject. Kod konfiguracji tej 
+udostępnia zadeklarowane zależności, które można wstrzykiwać za pomocą adnotacji \textit{@Inject}. Kod konfiguracji tej 
 adnotacji w klasie głównej aplikacji został zaprezentowany w listingu \ref{hiltEntryPoint}.
-\begin{lstlisting}[language=Kotlin,caption=Przykład użycia @AndroidEntryPoint w MainActivity, label={hiltEntryPoint}]
+\begin{lstlisting}[language=Kotlin,caption=Przykład użycia \textit{@AndroidEntryPoint} w MainActivity, label={hiltEntryPoint}]
 	@AndroidEntryPoint
 		class MainActivity : ComponentActivity() {...}
 \end{lstlisting}
@@ -571,7 +580,7 @@ aplikacji.
 
 \subsection{Moduły Hilt}
 
-Jednym z kluczowych elementów Hilt jest definiowanie modułów za pomocą adnotacji @Module. Moduły te pozwalają 
+Jednym z kluczowych elementów Hilt jest definiowanie modułów za pomocą adnotacji \textit{@Module}. Moduły te pozwalają 
 precyzyjnie określić, jakie obiekty powinny być dostarczane i w jakim cyklu życia mają istnieć. W poniższym listingu
 \ref{supabaseModule} znajduje się przykład definiowania modułu dostarczającego klienta Supabase.
 \begin{lstlisting}[language=Kotlin,caption=Przykład modułu klienta Supabase, label={supabaseModule}]
@@ -597,11 +606,11 @@ precyzyjnie określić, jakie obiekty powinny być dostarczane i w jakim cyklu �
     }
 }
 \end{lstlisting}
-Adnotacja @InstallIn(...) określa, gdzie dany moduł będzie instalowany, a przez to, gdzie dostarczane zależności 
-będą dostępne. Przykładowo, @InstallIn(SingletonComponent::class) z linii pierwszej wskazuje, że zależności 
-zdefiniowane w module będą współdzielone w całej aplikacji. Adnotacja @Provides
+Adnotacja \textit{@InstallIn(...)} określa, gdzie dany moduł będzie instalowany, a przez to, gdzie dostarczane zależności 
+będą dostępne. Przykładowo, \textit{@InstallIn(SingletonComponent::class)} z linii pierwszej wskazuje, że zależności 
+zdefiniowane w module będą współdzielone w całej aplikacji. Adnotacja \textit{@Provides}
 Informuje Hilt, jak utworzyć daną zależność. W powyższym przykładzie funkcja provideSupabaseClient() definiuje, jak 
-stworzyć instancję SupabaseClient. Adnotacja @Singleton zapewnia, że obiekt będzie tworzony tylko raz podczas działania 
+stworzyć instancję SupabaseClient. Adnotacja \textit{@Singleton} zapewnia, że obiekt będzie tworzony tylko raz podczas działania 
 aplikacji.
 
 Innym przykładem zależności, którą można wstrzykiwać do różnych komponentów aplikacji, są lokalnie przechowywane 
@@ -643,7 +652,7 @@ danych wymagają różnych implementacji. Przykład implementacji modułu repozy
 
 Repozytorium to kluczowy komponent, który abstrahuje logikę uwierzytelniania od reszty aplikacji. W 
 AuthenticationRepositoryImpl wykorzystujemy wcześniej zdefiniowane zależności, takie jak Auth i UserPreferences. 
-Dzięki adnotacji @Inject Hilt automatycznie dostarcza te zależności. Kod repozytorium znajduje się w listingu 
+Dzięki adnotacji \textit{@Inject} Hilt automatycznie dostarcza te zależności. Kod repozytorium znajduje się w listingu 
 \ref{AuthenticationRepositoryImpl}
 
 \begin{lstlisting}[language=Kotlin,caption=Implementacja AuthenticationRepository, label={AuthenticationRepositoryImpl}]
@@ -776,7 +785,7 @@ dodatkowe informacje jak liczba wydanych tomów (total\_volumes\_released) oraz 
 użytkownika (is\_following). Wszystkie te dane są przechowywane w formacie, który może być łatwo przesyłany między 
 różnymi warstwami aplikacji, takimi jak repozytoria, ViewModel czy interfejs użytkownika.
 
-Klasa Series jest oznaczona adnotacją @Serializable, co sprawia, że może być łatwo przekształcana do i z formatu 
+Klasa Series jest oznaczona adnotacją \textit{@Serializable}, co sprawia, że może być łatwo przekształcana do i z formatu 
 JSON. Serializacja jest kluczowa, ponieważ w przypadku aplikacji komunikujących się z zewnętrznymi API, jak np. 
 Supabase, dane są często przesyłane w formacie JSON. Aby odpowiedź z API mogła zostać zamapowana na obiekt w 
 Kotlinie, musi być ona odpowiednio zserializowana.
@@ -1111,14 +1120,112 @@ co upraszcza przekazywanie akcji użytkownika do warstwy logiki biznesowej.
 
 \clearpage
 
-\section{Nawigacja}
+\section{Ekrany i nawigacja}
+Nawigacja w aplikacji określa sposób, w jaki użytkownicy przechodzą między ekranami i korzystają z dostępnych 
+funkcji. Jej odpowiednie zaprojektowanie ułatwia poruszanie się po aplikacji oraz zapewnia spójność doświadczeń 
+użytkownika. Schemat blokowy ilustrujący zależności pomiędzy ekranami oraz ścieżki znajduje się na poniższym
+rysunku \ref{Fig:nawigacja}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=1\textwidth]{figures/nawigacja.png}
+	\caption{Schemat blokowy nawigacji}
+\label{Fig:nawigacja}
+\end{figure}
+Po uruchomieniu aplikacji użytkownik trafia na ekran ładowania. Jeśli nie ma zapisanego tokenu, zostanie 
+przekierowany do ekranu logowania, gdzie może się zalogować lub przejść do ekranu rejestracji, aby założyć nowe 
+konto. Po pomyślnym zweryfikowaniu tokenu, zalogowaniu się lub utworzeniu konta, użytkownik zostanie przeniesiony 
+do głównej części aplikacji, która rozpoczyna się od ekranu biblioteki. Ekrany logowania i rejestracji są 
+zaprezentowane na poniższym rysunku \ref{fig:SignInUp}
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{figures/SignIn.png}
+        \caption{Ekran logowania}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{figures/SignUp.png}
+        \caption{Ekran rejestracji}
+    \end{subfigure}
+    \caption{Ekrany logowania i rejestracji w aplikacji}
+    \label{fig:SignInUp}
+\end{figure}
+
+Na dole ekranów biblioteki, odkrywania i profilu znajduje się komponent BottomNavigationBar, który umożliwia 
+łatwe przechodzenie między tymi sekcjami. Przykładowe ekrany, na których znajduje się ten komponent 
+zaprezentowane są na poniższym rysunku \ref{fig:libraryDiscover}
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{figures/discover.png}
+        \caption{Ekran odkrywania}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{figures/library.png}
+        \caption{Ekran biblioteki}
+    \end{subfigure}
+    \caption{Ekrany odkrywania i biblioteki w aplikacji}
+    \label{fig:libraryDiscover}
+\end{figure}
+\FloatBarrier
+Aby przejść do ekranu konkretnej serii, użytkownik może kliknąć komponent SeriesCard w bibliotece lub 
+SeriesListItem w sekcji odkrywania. Natomiast, aby przejść do ekranu konkretnego tomu serii, należy kliknąć 
+komponent VolumeListItem na ekranie serii lub UpcomingListItem w zakładce nadchodzących tomów w bibliotece. 
+ekrany te są widoczne na poniższym rysunku \ref{fig:seriesVolume}
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{figures/series.png}
+        \caption{Ekran serii}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{figures/volume.png}
+        \caption{Ekran tomu}
+    \end{subfigure}
+    \caption{Ekrany serii i tomu w aplikacji}
+    \label{fig:seriesVolume}
+\end{figure}
+
+Dodatkowo, z ekranu profilu użytkownik ma możliwość wylogowania się poprzez znajdujacego się na nim przycisku, 
+co spowoduje powrót do ekranu logowania. Ekran widoczny jest na poniższym rysunku \ref{Fig:profile}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.48\textwidth]{figures/profile.png}
+	\caption{Ekran profilu}
+\label{Fig:profile}
+\end{figure}
 
 \clearpage
 
 \section{Podsumowanie}
+Praca dotyczyła projektowania i implementacji mobilnej aplikacji do zarządzania osobistą biblioteką książek. W 
+ramach realizacji projektu zastosowano architekturę MVVM, co pozwoliło na zachowanie przejrzystości kodu i 
+łatwiejsze skalowanie aplikacji. Interfejs użytkownika został zaprojektowany z wykorzystaniem Jetpack Compose, 
+co zapewniło deklaratywne i nowoczesne podejście do tworzenia UI.
 
-Autor za wkład własny uważa stworzenie struktury bazy danych, funkcji PostgreSQL do pobierania z niej danych i 
-zaprogramowanie aplikacji na system android 
+Backend aplikacji oparto na Supabase, który oferuje bazę danych PostgreSQL oraz mechanizmy uwierzytelniania 
+użytkowników. Dzięki temu użytkownicy mogą zarządzać swoją biblioteką, śledzić postępy w czytaniu oraz 
+organizować swoje kolekcje książek w sposób efektywny i intuicyjny.
+
+Na podstawie przeprowadzonej implementacji można stwierdzić, że połączenie Jetpack Compose i Supabase jest 
+skutecznym rozwiązaniem dla aplikacji mobilnych wymagających dynamicznego interfejsu i zdalnej bazy danych.
+
+Autor za wkład własny uznaje następujące elementy:
+\begin{enumerate}[label=\alph*), leftmargin=1.25cm]
+	\item Zaprojektowanie i wdrożenie struktury bazy danych, uwzględniające 
+	optymalizację pod kątem wydajności i skalowalności,
+	\item napisanie zaawansowanych funkcji PostgreSQL, które umożliwiają efektywne pobieranie, przetwarzanie i 
+	zarządzanie danymi.
+	\item Przygotowanie projektu aplikacji, obejmującego zaplanowanie architektury, nawigacji oraz interfejsu 
+	użytkownika.
+	\item Opracowanie logiki biznesowej, która zapewnia poprawne działanie aplikacji zgodnie z założeniami 
+	funkcjonalnymi.
+	\item Implementację interfejsu użytkownika, aby zapewnić intuicyjność i wygodę korzystania z aplikacji.
+\end{enumerate}
 
 \clearpage
 
@@ -1128,7 +1235,14 @@ zaprogramowanie aplikacji na system android
 	\bibitem{} https://kotlinlang.org/docs/home.html
 	\bibitem{} https://supabase.com/docs/reference/kotlin/introduction
 	\bibitem{} https://developer.android.com/develop/ui/compose/documentation
+	\bibitem{} https://www.postgresql.org/docs/current/queries.html
 	\bibitem{} https://m3.material.io/
+	\bibitem{} https://www.geeksforgeeks.org/normal-forms-in-dbms/
+	\bibitem{} https://www.youtube.com/@AndroidDevelopers/videos
+	\bibitem{} https://www.youtube.com/@PhilippLackner
+	\bibitem{} https://www.youtube.com/@StevdzaSan
+	\bibitem{} https://proandroiddev.com/
+	\bibitem{} https://www.geeksforgeeks.org/android-jetpack-compose-tutorial/
 \end{thebibliography}
 
 \clearpage
